@@ -56,12 +56,19 @@ $di->set('mailer', function () use ($config) {
 * Send Email
 
     **Parameters**
+    
     * `text` - Text version of email body 
-    * `html` - HTML version of email body 
+    
+    * `html` - HTML version of email body
+     
     * `subject` - email subject
+    
     * `to` - recipient email and name as an associative array
+    
     * `from` - sender email and name as an associative array - defaults to `default_from_email` in config
+    
     * `cc` - array of cced recipients email and name as an associative array
+    
     * `bcc` - array of bcced recipients email and name as an associative array
     
     
