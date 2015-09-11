@@ -1,6 +1,6 @@
 <?php
 
-namespace PhalconUtils;
+namespace PhalconUtils\Mailer;
 
 use Swift_Mailer;
 use Swift_Message;
@@ -10,7 +10,7 @@ use Swift_SmtpTransport;
  * Class Mailer
  * @author Adeyemi Olaoye <yemi@cottacush.com>
  */
-class Mailer
+class MailerHandler
 {
     /** @var  Swift_Mailer $swiftClient */
     private $swiftClient;
