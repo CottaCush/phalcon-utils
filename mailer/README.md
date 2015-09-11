@@ -57,19 +57,28 @@ $di->set('mailer', function () use ($config) {
 
     **Parameters**
     
-    * `text` - Text version of email body 
+    * `text` - Text version of email body
+     
     
     * `html` - HTML version of email body
+    
      
     * `subject` - email subject
     
+    
     * `to` - recipient email and name as an associative array
+    
     
     * `from` - sender email and name as an associative array - defaults to `default_from_email` in config
     
+    
     * `cc` - array of cced recipients email and name as an associative array
     
+    
     * `bcc` - array of bcced recipients email and name as an associative array
+    
+    
+    * `params` - parameters to be replaced in email body
     
     
 ```php
@@ -77,5 +86,5 @@ $sendStatus = $this->mailer->send('Hello World', '<b>Hello World</b>', 'Test Ema
                                   ['test@example.com' => 'Test Test'],
                                   ['sender@example.com' => 'Test Test'], 
                                   ['testcc@example.com' => 'Test Test'],
-                                  ['testbcc@example.com' => 'Test Test']);
+                                  ['testbcc@example.com' => 'Test Test'], ['title'=> 'Mr']);
 ```

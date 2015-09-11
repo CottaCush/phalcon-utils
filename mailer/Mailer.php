@@ -1,6 +1,7 @@
 <?php
 
 namespace PhalconUtils;
+
 use Swift_Mailer;
 use Swift_Message;
 use Swift_SmtpTransport;
@@ -41,13 +42,14 @@ class Mailer
      * @param string $html
      * @param string $subject
      * @param array $to
+     * @param array $params
      * @param null $from
      * @param array $cc
      * @param array $bcc
-     * @author Adeyemi Olaoye <yemi@cottacush.com>
      * @return bool
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
      */
-    public function send($text = "", $html = "", $subject = "", $to = [], $from = null, $cc = [], $bcc = [])
+    public function send($text = "", $html = "", $subject = "", $to = [], $from = null, $cc = [], $bcc = [], $params = [])
     {
         $this->failures = [];
 
@@ -57,8 +59,8 @@ class Mailer
 
         $message = new Swift_Message($subject);
         $message->setFrom($from);
-        $message->setBody($html, 'text/html');
-        $message->addPart($text, 'text/plain');
+        $message->setBody($this->getActualMessage($html, $params), 'text/html');
+        $message->addPart($this->getActualMessage($text, $params), 'text/plain');
         $message->setTo($to);
         $message->setCC($cc);
         $message->setBcc($bcc);
@@ -67,6 +69,20 @@ class Mailer
         $this->swiftClient->send($message, $this->failures);
 
         return (count($this->failures) == 0);
+    }
+
+    /**
+     * @param $message
+     * @param $params
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @return mixed
+     */
+    private static function getActualMessage($message, $params)
+    {
+        foreach ($params as $param => $value) {
+            $message = str_replace('{{' . $param . '}}', $value, $message);
+        }
+        return $message;
     }
 
 }
