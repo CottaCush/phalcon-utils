@@ -1,2 +1,3 @@
 # Ignore project folders
 .idea/
+vendor/

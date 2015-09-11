@@ -1,0 +1,19 @@
+{
+  "name" : "phalcon-utils",
+  "description" : "Phalcon Utils is a repository for libraries that are used across different phalcon projects.",
+  "keywords": ["phalcon", "library", "utils", "cottacush", "mailer"],
+  "homepage": "https://bitbucket.org/cottacush/phalcon-utils#readme",
+  "type": "library",
+  "version" : "0.0.1",
+  "authors": [
+    {
+      "name": "Adeyemi Olaoye",
+      "email": "yemi@cottacush.com",
+      "role": "Creator"
+    }
+  ],
+  "require": {
+    "ext-phalcon" : ">=2.0.0",
+    "swiftmailer/swiftmailer": "@stable"
+  }
+}
