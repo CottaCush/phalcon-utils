@@ -10,8 +10,8 @@ Adeyemi Olaoye <yemi@cottacush.com>
 
 Requirements
 ------------
-* [[https://github.com/swiftmailer/swiftmailer | SwiftMailer]]
-* [[http://mandrill.com | Active Mandrill Account]]
+* [SwiftMailer] (https://github.com/swiftmailer/swiftmailer)
+* [Active Mandrill Account] (http://mandrill.com)
 
 
 
