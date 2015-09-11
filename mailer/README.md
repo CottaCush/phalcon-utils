@@ -43,7 +43,7 @@ return new \Phalcon\Config(array(
   * Register mailer service
   */
 $di->set('mailer', function () use ($config) {
-    return new MailHandler(
+    return new PhalconUtils/Mailer(
     $config->params->mailer->mandrill_username,
     $config->params->mailer->mandrill_password,
     $config->params->mailer->smtp_host,
