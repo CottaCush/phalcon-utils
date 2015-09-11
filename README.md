@@ -5,6 +5,7 @@ Phalcon Utils is a repository for libraries that are used across different phalc
 
 Features
 --------
+* Mailer - Mail sending library
 
 
 
@@ -22,6 +23,26 @@ Requirements
 
 Installation
 ------------
+modify your composer.json
+
+```json
+    "require": {
+        ...
+        "vendor/phalcon-utils": "master"
+        ...
+    },
+    "repositories": [
+         ...
+        {
+            "type": "vcs",
+            "url":  " git@bitbucket.org:cottacush/phalcon-utils.git"
+        },
+        ...
+    ]
+```
+
+run `composer update`
+
 
 
 
