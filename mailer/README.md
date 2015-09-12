@@ -82,9 +82,9 @@ $di->set('mailer', function () use ($config) {
     
     
 ```php
-$sendStatus = $this->mailer->send('Hello World', '<b>Hello World</b>', 'Test Email', 
+$sendStatus = $this->mailer->send('Hello World', '<b>Hello World {{title}} {{name}}</b>', 'Test Email', 
                                   ['test@example.com' => 'Test Test'],
                                   ['sender@example.com' => 'Test Test'], 
                                   ['testcc@example.com' => 'Test Test'],
-                                  ['testbcc@example.com' => 'Test Test'], ['title'=> 'Mr']);
+                                  ['testbcc@example.com' => 'Test Test'], ['title'=> 'Mr', 'name'=> 'Test']);
 ```
