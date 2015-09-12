@@ -16,8 +16,8 @@ Adeyemi Olaoye <yemi@cottacush.com>
 
 Requirements
 ------------
-* [Phalcon 2.0.*] (https://docs.phalconphp.com/en/latest/reference/install.html)
-* [Composer] (https://getcomposer.org/doc/00-intro.md#using-composer)
+* [Phalcon 2.0.*](https://docs.phalconphp.com/en/latest/reference/install.html)
+* [Composer](https://getcomposer.org/doc/00-intro.md#using-composer)
 
 
 
