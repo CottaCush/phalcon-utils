@@ -8,4 +8,6 @@
 # [1.1.1](https://bitbucket.org/cottacush/phalcon-utils/src/dfab344a7d083058fe0462d267c9eb77f517ec7e/?at=1.1.1) (2015-09-14)
 - Fix issue with mailer namespace case sensitivity 
 
+# [1.1.2](https://bitbucket.org/cottacush/phalcon-utils/src/bcedaeb787dd08635ad997d21452c54e95840274/?at=1.1.2) (2015-09-15)
+- Modified `composer.json` to enable version compatibility
 
