@@ -11,5 +11,5 @@
 # [1.1.2](https://bitbucket.org/cottacush/phalcon-utils/src/bcedaeb787dd08635ad997d21452c54e95840274/?at=1.1.2) (2015-09-15)
 - Modified `composer.json` to enable version compatibility
 
-# [1.2.0](https://bitbucket.org/cottacush/phalcon-utils/src/f5dea9a40f01aadb5f8dc3a7ad432000b4d47155/?at=1.2.0) (2015-09-22)
+# [1.2.0](https://bitbucket.org/cottacush/phalcon-utils/src/18e47e8f3f3e5217345362b7f74f2c2c3c92b4d7?at=1.2.0) (2015-09-22)
 - Added `PhalconUtils/S3` to handle AWS S3 actions
