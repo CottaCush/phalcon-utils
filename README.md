@@ -6,6 +6,7 @@ Phalcon Utils is a repository for libraries that are used across different phalc
 Features
 --------
 * Mailer - Mail sending library
+* S3 - AWS S3 library
 
 
 
