@@ -22,10 +22,12 @@ class S3Client
      * Create an instance of S3Client
      * @param $awsKey
      * @param $awsSecret
+     * @param $region
+     * @param string $version
      * @param null $bucket
      * @param null $namespace
      */
-    public function __construct($awsKey, $awsSecret, $bucket = null, $namespace = null)
+    public function __construct($awsKey, $awsSecret, $region, $version = '2006-03-01', $bucket = null, $namespace = null)
     {
         $this->awsKey = $awsKey;
         $this->awsSecret = $awsSecret;
@@ -35,7 +37,9 @@ class S3Client
             'credentials' => [
                 'key' => $awsKey,
                 'secret' => $awsSecret
-            ]
+            ],
+            'region' => $region,
+            'version' => $version
         ]);
         $this->client->registerStreamWrapper();
     }
@@ -48,7 +52,7 @@ class S3Client
      */
     public function createBucket($bucket_name)
     {
-        if ($this->client->doesBucketExist($bucket_name)) {
+        if (!$this->doesBucketExist($bucket_name)) {
             $this->addMessage("Bucket $bucket_name already exists");
             return true;
         }
@@ -59,6 +63,16 @@ class S3Client
             $this->addMessage('Could not create bucket ' . $bucket_name);
             return false;
         }
+    }
+
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param $bucket_name
+     * @return bool
+     */
+    public function doesBucketExist($bucket_name)
+    {
+        return is_dir('s3://' . $bucket_name);
     }
 
     /**
@@ -85,7 +99,12 @@ class S3Client
             $namespace = $this->namespace;
         }
 
-        $namespace = (strlen($namespace) == 0)?'':$namespace.'/';
+        $namespace = (strlen($namespace) == 0) ? $namespace . '/' : '';
+
+        if(!$this->doesBucketExist($bucket)){
+            $this->addMessage('Bucket does not exist');
+            return false;
+        }
 
         if (copy($file_path, "s3://$bucket/$file_name")) {
             return $file_name;
