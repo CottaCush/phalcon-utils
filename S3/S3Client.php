@@ -99,9 +99,9 @@ class S3Client
             $namespace = $this->namespace;
         }
 
-        $namespace = (strlen($namespace) == 0) ? $namespace . '/' : '';
+        $namespace = (strlen($namespace) == 0) ? '' : $namespace . '/';
 
-        if(!$this->doesBucketExist($bucket)){
+        if (!$this->doesBucketExist($bucket)) {
             $this->addMessage('Bucket does not exist');
             return false;
         }
