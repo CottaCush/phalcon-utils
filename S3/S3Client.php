@@ -42,6 +42,10 @@ class S3Client
             'version' => $version
         ]);
         $this->client->registerStreamWrapper();
+
+        if (!is_null($bucket) && !$this->doesBucketExist($bucket)) {
+            $this->createBucket($bucket);
+        }
     }
 
     /**
