@@ -27,7 +27,7 @@ class S3Client
      * @param null $bucket
      * @param null $namespace
      */
-    public function __construct($awsKey, $awsSecret, $region, $version = '2006-03-01', $bucket = null, $namespace = null)
+    public function __construct($awsKey, $awsSecret, $region, $bucket = null, $namespace = null, $version = '2006-03-01')
     {
         $this->awsKey = $awsKey;
         $this->awsSecret = $awsSecret;
