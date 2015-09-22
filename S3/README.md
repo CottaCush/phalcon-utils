@@ -28,8 +28,7 @@ return new \Phalcon\Config(array(
         'aws_secret' => 'AWS_SECRET',
         's3' => array (
             'bucket' => 'test_bucket',
-            'namespace' => 'test_namespace',
-            'region' => 'test_region'
+            'namespace' => 'test_namespace'
         )
     )
     ....    
@@ -43,6 +42,6 @@ return new \Phalcon\Config(array(
   * Register s3 client as a lazy loaded service
   */
 $di->set('S3Client', function () use ($config) {
-    return new S3Client($config->aws->aws_key, $config->aws->aws_secret, $config->aws->s3->region, $config->aws->s3->bucket, $config->aws->s3->namespace);
+    return new S3Client($config->aws->aws_key, $config->aws->aws_secret, $config->aws->s3->bucket, $config->aws->s3->namespace);
 });
 ```
