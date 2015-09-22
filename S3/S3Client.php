@@ -52,7 +52,7 @@ class S3Client
      */
     public function createBucket($bucket_name)
     {
-        if (!$this->doesBucketExist($bucket_name)) {
+        if ($this->doesBucketExist($bucket_name)) {
             $this->addMessage("Bucket $bucket_name already exists");
             return true;
         }
