@@ -82,13 +82,13 @@ class S3Client
     /**
      * Create an object
      * @author Adeyemi Olaoye <yemi@cottacush.com>
-     * @param $file_path
+     * @param $local_file_path
      * @param $file_name
      * @param null $bucket
      * @param null $namespace
      * @return bool
      */
-    public function createObject($file_path, $file_name, $bucket = null, $namespace = null)
+    public function createObject($local_file_path, $file_name, $bucket = null, $namespace = null)
     {
         if (is_null($bucket) && is_null($this->bucket)) {
             $this->addMessage('Invalid bucket');
@@ -97,7 +97,7 @@ class S3Client
             $bucket = $this->bucket;
         }
 
-        if (is_null($namespace) && is_null($namespace)) {
+        if (is_null($namespace) && is_null($this->namespace)) {
             $namespace = '';
         } else if (!is_null($this->namespace)) {
             $namespace = $this->namespace;
@@ -110,10 +110,12 @@ class S3Client
             return false;
         }
 
-        if (copy($file_path, "s3://$bucket/$file_name")) {
+        $s3_file_path = "s3://$bucket/$namespace$file_name";
+
+        if (copy($local_file_path, $s3_file_path)) {
             return $file_name;
         } else {
-            $this->addMessage("Could not upload file from $file_path to s3://$bucket/$namespace$file_name");
+            $this->addMessage("Could not upload file from $local_file_path to $s3_file_path");
             return false;
         }
     }
