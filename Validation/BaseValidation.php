@@ -53,6 +53,11 @@ class BaseValidation extends Validation
         }
     }
 
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param array $fields
+     * @param bool|false $allowEmpty
+     */
     public function setRequiredFields(array $fields, $allowEmpty = false)
     {
         foreach ($fields as $field) {
@@ -61,5 +66,17 @@ class BaseValidation extends Validation
                 'allowEmpty' => $allowEmpty
             ]));
         }
+    }
+
+    /**
+     * Validate a set of data according to a set of rules
+     *
+     * @param array|object $data
+     * @param object $entity
+     * @return bool
+     */
+    public function validate($data = null, $entity = null)
+    {
+        return !count(parent::validate($data, $entity));
     }
 }
