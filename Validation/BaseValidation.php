@@ -27,7 +27,7 @@ class BaseValidation extends Validation
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      * @return mixed|string
      */
-    public function getMessagesAsSentence()
+    public function getMessages()
     {
         $messages = [];
 
@@ -92,6 +92,16 @@ class BaseValidation extends Validation
      */
     public function validate($data = null, $entity = null)
     {
+        if (!is_null($this->namespace) && !is_null($data)) {
+            if (is_array($data) && isset($data[$this->namespace])) {
+                $data = $data[$this->namespace];
+            } else if (is_object($data) && property_exists($data, $this->namespace)) {
+                $data = $data->{$this->namespace};
+            } else {
+                $data = null;
+            }
+        }
+
         return !count(parent::validate($data, $entity));
     }
 

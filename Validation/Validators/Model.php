@@ -8,7 +8,6 @@ use Phalcon\Validation;
 use Phalcon\Validation\Message;
 use Phalcon\Validation\Validator;
 use Phalcon\Validation\ValidatorInterface;
-use ReflectionClass;
 
 /**
  * Class Model
