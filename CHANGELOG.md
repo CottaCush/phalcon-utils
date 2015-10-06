@@ -14,7 +14,7 @@
 # [1.2.0](https://bitbucket.org/cottacush/phalcon-utils/src/18e47e8f3f3e5217345362b7f74f2c2c3c92b4d7?at=1.2.0) (2015-09-22)
 - Added `PhalconUtils/S3` to handle AWS S3 actions
 
-# [1.2.0](https://bitbucket.org/cottacush/phalcon-utils/src/18e47e8f3f3e5217345362b7f74f2c2c3c92b4d7?at=1.2.0) (2015-10-07)
+# [1.3.0](https://bitbucket.org/cottacush/phalcon-utils/src/18e47e8f3f3e5217345362b7f74f2c2c3c92b4d7?at=1.2.0) (2015-10-07)
 - Added `PhalconUtils/Validation` for custom Phalcon Validators and other Validation Utils
 - Added `PhalconUtils/Validation/Validators/Model` to allow for model validation checks
 - Added `PhalconUtils/Validation/Validators/NotExisting` to allow not-existing model validation checks
