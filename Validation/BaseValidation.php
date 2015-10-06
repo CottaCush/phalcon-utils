@@ -132,6 +132,8 @@ class BaseValidation extends Validation
     public function setNamespace($namespace)
     {
         $this->namespace = $namespace;
+        $this->setValidators([]);
+        $this->initialize();
     }
 
     /**
