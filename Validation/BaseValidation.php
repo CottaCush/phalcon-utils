@@ -12,7 +12,7 @@ use Phalcon\Validation\Validator\PresenceOf;
  * @author Adeyemi Olaoye <yemi@cottacush.com>
  * @package PhalconUtils\Validation
  */
-class BaseValidation extends Validation
+abstract class BaseValidation extends Validation
 {
     protected $namespace;
     protected $data;
@@ -103,6 +103,28 @@ class BaseValidation extends Validation
         return !count(parent::validate($data, $entity));
     }
 
+    /**
+     * @return array|null|object
+     */
+    public function getData()
+    {
+        if (!is_null($this->namespace) && !is_null($this->data)) {
+            if (is_array($this->data) && isset($data[$this->namespace])) {
+                return $data[$this->namespace];
+            } else if (is_object($this->data) && property_exists($this->data, $this->namespace)) {
+                return $this->data->{$this->namespace};
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param array|null|object $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
 
     /**
      * @author Adeyemi Olaoye <yemexx1@gmail.com>
@@ -137,27 +159,11 @@ class BaseValidation extends Validation
     }
 
     /**
-     * @return array|null|object
+     * validations setups
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @return mixed
      */
-    public function getData()
-    {
-        if (!is_null($this->namespace) && !is_null($this->data)) {
-            if (is_array($this->data) && isset($data[$this->namespace])) {
-                return $data[$this->namespace];
-            } else if (is_object($this->data) && property_exists($this->data, $this->namespace)) {
-                return $this->data->{$this->namespace};
-            }
-        }
-        return null;
-    }
-
-    /**
-     * @param array|null|object $data
-     */
-    public function setData($data)
-    {
-        $this->data = $data;
-    }
+    abstract function initialize();
 
     /**
      * @author Adeyemi Olaoye <yemi@cottacush.com>
@@ -174,6 +180,4 @@ class BaseValidation extends Validation
         }
         return null;
     }
-
-
 }
