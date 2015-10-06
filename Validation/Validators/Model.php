@@ -42,7 +42,11 @@ class Model extends Validator implements ValidatorInterface
             $data = $model::findFirst(['conditions' => $conditions, 'bind' => $bind]);
         }
         if (!$data) {
-            $validation->appendMessage(new Message('Invalid :field supplied', $attribute, 'Model'));
+            $message = $this->getOption('message');
+            if (is_null($message)) {
+                $message = 'Invalid :field supplied';
+            }
+            $validation->appendMessage(new Message($message, $attribute, 'Model'));
             return false;
         }
 
