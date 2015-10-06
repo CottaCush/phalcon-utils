@@ -14,12 +14,17 @@ use Phalcon\Validation\Validator\PresenceOf;
  */
 class BaseValidation extends Validation
 {
+    protected $namespace;
+    protected $data;
+
     /**
+     * @param null|array|object $data
      * @param string|null $namespace
      */
-    public function __construct($namespace = null)
+    public function __construct($data = null, $namespace = null)
     {
         $this->namespace = $namespace;
+        $this->data = $data;
         parent::__construct();
     }
 
@@ -92,6 +97,10 @@ class BaseValidation extends Validation
      */
     public function validate($data = null, $entity = null)
     {
+        if (is_null($data)) {
+            $data = $this->data;
+        }
+
         if (!is_null($this->namespace) && !is_null($data)) {
             if (is_array($data) && isset($data[$this->namespace])) {
                 $data = $data[$this->namespace];
@@ -116,7 +125,6 @@ class BaseValidation extends Validation
         if (!is_null($this->namespace)) {
             $message->setMessage(str_replace($message->getField(), $this->namespace . '.' . $message->getField(), $message->getMessage()));
         }
-
         return parent::appendMessage($message);
     }
 
@@ -134,6 +142,22 @@ class BaseValidation extends Validation
     public function setNamespace($namespace)
     {
         $this->namespace = $namespace;
+    }
+
+    /**
+     * @return array|null|object
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param array|null|object $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
     }
 
 
