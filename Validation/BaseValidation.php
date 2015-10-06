@@ -115,7 +115,7 @@ abstract class BaseValidation extends Validation
                 return $this->data->{$this->namespace};
             }
         }
-        return null;
+        return $this->data;
     }
 
     /**
