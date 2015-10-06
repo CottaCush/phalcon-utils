@@ -99,16 +99,8 @@ class BaseValidation extends Validation
     {
         if (is_null($data)) {
             $data = $this->data;
-        }
-
-        if (!is_null($this->namespace) && !is_null($data)) {
-            if (is_array($data) && isset($data[$this->namespace])) {
-                $data = $data[$this->namespace];
-            } else if (is_object($data) && property_exists($data, $this->namespace)) {
-                $data = $data->{$this->namespace};
-            } else {
-                $data = null;
-            }
+        } else {
+            $data = $data = $this->getData();
         }
 
         return !count(parent::validate($data, $entity));
@@ -124,6 +116,7 @@ class BaseValidation extends Validation
     {
         if (!is_null($this->namespace)) {
             $message->setMessage(str_replace($message->getField(), $this->namespace . '.' . $message->getField(), $message->getMessage()));
+            $message->setMessage(str_replace(':field', $this->namespace . '.' . $message->getField(), $message->getMessage()));
         }
         return parent::appendMessage($message);
     }
@@ -149,7 +142,14 @@ class BaseValidation extends Validation
      */
     public function getData()
     {
-        return $this->data;
+        if (!is_null($this->namespace) && !is_null($this->data)) {
+            if (is_array($this->data) && isset($data[$this->namespace])) {
+                return $data[$this->namespace];
+            } else if (is_object($this->data) && property_exists($this->data, $this->namespace)) {
+                return $this->data->{$this->namespace};
+            }
+        }
+        return null;
     }
 
     /**
@@ -167,13 +167,13 @@ class BaseValidation extends Validation
      */
     public function getValue($attribute)
     {
-        if (is_array($this->data) && isset($this->data[$attribute])) {
-            return $this->data[$attribute];
-        } else if (is_object($this->data) && property_exists($this->data, $attribute)) {
-            return $this->data->{$attribute};
-        } else {
-            return null;
+        $data = $this->getData();
+        if (is_array($data) && isset($data[$attribute])) {
+            return $data[$attribute];
+        } else if (is_object($data) && property_exists($data, $attribute)) {
+            return $data->{$attribute};
         }
+        return null;
     }
 
 
