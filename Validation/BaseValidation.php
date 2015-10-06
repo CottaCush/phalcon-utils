@@ -160,5 +160,21 @@ class BaseValidation extends Validation
         $this->data = $data;
     }
 
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param string $attribute
+     * @return null|mixed
+     */
+    public function getValue($attribute)
+    {
+        if (is_array($this->data && isset($this->data[$attribute]))) {
+            return $this->data[$attribute];
+        } else if (is_object($this->data) && property_exists($this->data, $attribute)) {
+            return $this->data->{$attribute};
+        } else {
+            return null;
+        }
+    }
+
 
 }
