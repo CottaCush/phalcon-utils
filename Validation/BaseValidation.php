@@ -1,8 +1,8 @@
 <?php
 
-
 namespace PhalconUtils\Validation;
 
+use Phalcon\Mvc\Model\Validator\PresenceOf;
 use Phalcon\Validation;
 
 /**
@@ -27,6 +27,7 @@ class BaseValidation extends Validation
     }
 
     /**
+     * Get messages as a sentence
      * @credits https://github.com/yiisoft/yii2/blob/master/framework/helpers/BaseInflector.php
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      * @param array $words
@@ -49,6 +50,16 @@ class BaseValidation extends Validation
                 return implode($twoWordsConnector, $words);
             default:
                 return implode($connector, array_slice($words, 0, -1)) . $lastWordConnector . end($words);
+        }
+    }
+
+    public function setRequiredFields(array $fields, $allowEmpty = false)
+    {
+        foreach ($fields as $field) {
+            $this->add($field, new PresenceOf([
+                'message' => "$field is required",
+                'allowEmpty' => $allowEmpty
+            ]));
         }
     }
 }
