@@ -1,15 +1,15 @@
 <?php
-/**
- * Author: Adeyemi Olaoye <yemi@cottacush.com>
- * Date: 07/10/15
- * Time: 12:29 AM
- */
 
 namespace PhalconUtils\Validation\Validators;
 
 
 use PhalconUtils\Validation\BaseValidation;
 
+/**
+ * Class RequestValidation
+ * @author Adeyemi Olaoye <yemi@cottacush.com>
+ * @package PhalconUtils\Validation\Validators
+ */
 class RequestValidation extends BaseValidation
 {
 
