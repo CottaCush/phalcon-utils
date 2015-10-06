@@ -1,9 +1,6 @@
 <?php
 
-namespace PhalconUtils\Validation\Validators;
-
-
-use PhalconUtils\Validation\BaseValidation;
+namespace PhalconUtils\Validation;
 
 /**
  * Class RequestValidation
