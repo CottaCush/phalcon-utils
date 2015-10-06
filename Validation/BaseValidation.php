@@ -3,6 +3,8 @@
 namespace PhalconUtils\Validation;
 
 use Phalcon\Validation;
+use Phalcon\Validation\MessageInterface;
+use Phalcon\Validation\Validator;
 use Phalcon\Validation\Validator\PresenceOf;
 
 /**
@@ -12,6 +14,15 @@ use Phalcon\Validation\Validator\PresenceOf;
  */
 class BaseValidation extends Validation
 {
+    /**
+     * @param string|null $namespace
+     */
+    public function __construct($namespace = null)
+    {
+        $this->namespace = $namespace;
+        parent::__construct();
+    }
+
     /**
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      * @return mixed|string
@@ -56,15 +67,19 @@ class BaseValidation extends Validation
     /**
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      * @param array $fields
-     * @param bool|false $allowEmpty
+     * @param array $options
      */
-    public function setRequiredFields(array $fields, $allowEmpty = false)
+    public function setRequiredFields(array $fields, $options = [])
     {
+        if (!isset($options['message'])) {
+            $options['message'] = ":field is required";
+        }
+        if (!isset($options['allowEmpty'])) {
+            $options['allowEmpty'] = false;
+        }
+
         foreach ($fields as $field) {
-            $this->add($field, new PresenceOf([
-                'message' => ":field is required",
-                'allowEmpty' => $allowEmpty
-            ]));
+            $this->add($field, new PresenceOf($options));
         }
     }
 
@@ -79,4 +94,37 @@ class BaseValidation extends Validation
     {
         return !count(parent::validate($data, $entity));
     }
+
+
+    /**
+     * @author Adeyemi Olaoye <yemexx1@gmail.com>
+     * @param MessageInterface $message
+     * @return Validation
+     */
+    public function appendMessage(MessageInterface $message)
+    {
+        if (!is_null($this->namespace)) {
+            $message->setMessage(str_replace($message->getField(), $this->namespace . '.' . $message->getField(), $message->getMessage()));
+        }
+
+        return parent::appendMessage($message);
+    }
+
+    /**
+     * @return null
+     */
+    public function getNamespace()
+    {
+        return $this->namespace;
+    }
+
+    /**
+     * @param null $namespace
+     */
+    public function setNamespace($namespace)
+    {
+        $this->namespace = $namespace;
+    }
+
+
 }
