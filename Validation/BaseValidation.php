@@ -167,7 +167,7 @@ class BaseValidation extends Validation
      */
     public function getValue($attribute)
     {
-        if (is_array($this->data && isset($this->data[$attribute]))) {
+        if (is_array($this->data) && isset($this->data[$attribute])) {
             return $this->data[$attribute];
         } else if (is_object($this->data) && property_exists($this->data, $attribute)) {
             return $this->data->{$attribute};
