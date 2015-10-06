@@ -15,7 +15,7 @@ use ReflectionClass;
  * @author Adeyemi Olaoye <yemi@cottacush.com>
  * @package PhalconUtils\Validation\Validators
  */
-class Model extends Validator implements ValidatorInterface
+class Model extends BaseValidator implements ValidatorInterface
 {
 
     /**
@@ -31,10 +31,7 @@ class Model extends Validator implements ValidatorInterface
         $model_name = $this->getOption('model', null);
         $conditions = $this->getOption('conditions', null);
         $bind = $this->getOption('bind', []);
-
-        $model = new ReflectionClass($model_name);
-        /** @var PhalconModel $model_instance */
-        $model = $model->newInstanceWithoutConstructor();
+        $model = $this->getModel($model_name);
 
         if (is_null($conditions)) {
             $data = $model::findFirst($value);
@@ -42,11 +39,7 @@ class Model extends Validator implements ValidatorInterface
             $data = $model::findFirst(['conditions' => $conditions, 'bind' => $bind]);
         }
         if (!$data) {
-            $message = $this->getOption('message');
-            if (is_null($message)) {
-                $message = 'Invalid :field supplied';
-            }
-            $validation->appendMessage(new Message($message, $attribute, 'Model'));
+            $this->addMessageToValidation($validation, 'Invalid :field supplied', $attribute, 'Model');
             return false;
         }
 
