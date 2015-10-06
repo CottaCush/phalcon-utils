@@ -5,6 +5,7 @@ namespace PhalconUtils\Validation\Validators;
 
 use Phalcon\Mvc\Model as PhalconModel;
 use Phalcon\Validation;
+use Phalcon\Validation\Message;
 use Phalcon\Validation\Validator;
 use Phalcon\Validation\ValidatorInterface;
 use ReflectionClass;
@@ -40,7 +41,11 @@ class Model extends Validator implements ValidatorInterface
         } else {
             $data = $model::findFirst(['conditions' => $conditions, 'bind' => $bind]);
         }
+        if (!$data) {
+            $validation->appendMessage(new Message('Invalid :field supplied', $attribute, 'Model'));
+            return false;
+        }
 
-        return ($data) ? true : false;
+        return true;
     }
 }

@@ -2,8 +2,8 @@
 
 namespace PhalconUtils\Validation;
 
-use Phalcon\Mvc\Model\Validator\PresenceOf;
 use Phalcon\Validation;
+use Phalcon\Validation\Validator\PresenceOf;
 
 /**
  * Class BaseValidation
@@ -57,7 +57,7 @@ class BaseValidation extends Validation
     {
         foreach ($fields as $field) {
             $this->add($field, new PresenceOf([
-                'message' => "$field is required",
+                'message' => ":field is required",
                 'allowEmpty' => $allowEmpty
             ]));
         }
