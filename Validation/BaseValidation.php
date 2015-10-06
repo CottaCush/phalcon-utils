@@ -100,7 +100,6 @@ class BaseValidation extends Validation
         if (is_null($data)) {
             $data = $this->getData();
         }
-        
         return !count(parent::validate($data, $entity));
     }
 

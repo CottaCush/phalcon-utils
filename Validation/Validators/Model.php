@@ -30,6 +30,7 @@ class Model extends BaseValidator implements ValidatorInterface
         $model_name = $this->getOption('model', null);
         $conditions = $this->getOption('conditions', null);
         $bind = $this->getOption('bind', []);
+        $show_messages = $this->getOption('show_messages', true);
         $model = $this->getModel($model_name);
 
         if (is_null($conditions)) {
@@ -38,10 +39,11 @@ class Model extends BaseValidator implements ValidatorInterface
             $data = $model::findFirst(['conditions' => $conditions, 'bind' => $bind]);
         }
         if (!$data) {
-            $this->addMessageToValidation($validation, 'Invalid :field supplied', $attribute, 'Model');
+            if ($show_messages) {
+                $this->addMessageToValidation($validation, 'Invalid :field supplied', $attribute, 'Model');
+            }
             return false;
         }
-
         return true;
     }
 }

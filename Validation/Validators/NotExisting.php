@@ -20,6 +20,11 @@ class NotExisting extends Model
      */
     public function validate(Validation $validation, $attribute)
     {
-        return !parent::validate($validation, $attribute);
+        $this->setOption('show_messages', false);
+        $is_valid = !parent::validate($validation, $attribute);
+        if (!$is_valid) {
+            $this->addMessageToValidation($validation, ':field already exists', $attribute, 'NotExisting');
+        }
+        return $is_valid;
     }
 }
