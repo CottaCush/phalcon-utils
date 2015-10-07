@@ -7,6 +7,7 @@ Features
 --------
 * Mailer - Mail sending library
 * S3 - AWS S3 library
+* Validation - Custom Validators and Validation Utils
 
 
 
