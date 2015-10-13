@@ -19,7 +19,7 @@ class Model extends BaseValidator implements ValidatorInterface
 
     /**
      * Executes the validation
-     *
+     * Note: Explicitly supply `conditions` and `bind` options if model PK is not `id`
      * @param mixed $validation
      * @param string $attribute
      * @return bool
@@ -36,8 +36,8 @@ class Model extends BaseValidator implements ValidatorInterface
         $model = $this->getModel($model_name);
 
         if (is_null($conditions)) {
-            $value = intval($value);
-            $data = $model::findFirst($value);
+            $data = $model::findFirst(["id = ?0",
+                "bind" => $value]);
         } else {
             $data = $model::findFirst(['conditions' => $conditions, 'bind' => $bind]);
         }
