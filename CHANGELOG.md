@@ -20,3 +20,6 @@
 - Added `PhalconUtils/Validation/Validators/NotExisting` to allow not-existing model validation checks
 - Added `PhalconUtils/Validation/BaseValidation`
 - Added `PhalconUtils/Validation/RequestValidation` to allow for validating request post data
+
+# [1.3.1](https://bitbucket.org/cottacush/phalcon-utils/src/1ec7452c7c09c9ed694ad6cd9e69856da49b1921/?at=1.3.1) (2015-10-13)
+- Fixed issue with `Model::findFirst` in `PhalconUtils/Validation/Validators/Model`
