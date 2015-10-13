@@ -36,8 +36,7 @@ class Model extends BaseValidator implements ValidatorInterface
         $model = $this->getModel($model_name);
 
         if (is_null($conditions)) {
-            $data = $model::findFirst(["id = ?0",
-                "bind" => $value]);
+            $data = $model::findFirst(["id = ?0", "bind" => $value]);
         } else {
             $data = $model::findFirst(['conditions' => $conditions, 'bind' => $bind]);
         }
