@@ -23,3 +23,6 @@
 
 # [1.3.1](https://bitbucket.org/cottacush/phalcon-utils/src/1ec7452c7c09c9ed694ad6cd9e69856da49b1921/?at=1.3.1) (2015-10-13)
 - Fixed issue with `Model::findFirst` in `PhalconUtils/Validation/Validators/Model`
+
+# [1.4.0](https://bitbucket.org/cottacush/phalcon-utils/src/567f3852e58966daa62e23bae624c1d8b43e42f6/?at=1.4.0) (2015-10-14)
+- Added `PhalconUtils/Validation/Validators/NigerianPhoneNumber` to validate Nigerian phone numbers
