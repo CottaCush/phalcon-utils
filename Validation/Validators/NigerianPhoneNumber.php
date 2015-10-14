@@ -24,7 +24,7 @@ class NigerianPhoneNumber extends BaseValidator
     {
         $includeCountryCode = $this->getOption('must_include_country_code', false);
         $includePlus = $this->getOption('must_include_plus', false);
-        $pattern = '/^' . '[+]' . (($includePlus) ? '' : '?') . (($includeCountryCode) ? '234' : '') . '[0]' . (($includeCountryCode) ? '?' : '') . '[\d]{10}$/';
+        $pattern = '/^' . '[+]' . (($includePlus) ? '' : '?') . (($includeCountryCode) ? '234[0]?' : '((234[0]?)|0)') . '[\d]{10}$/';
         $this->setOption('pattern', $pattern);
 
         if (!preg_match($pattern, $validation->getValue($attribute))) {
