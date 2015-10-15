@@ -41,3 +41,6 @@
 
 # [1.7.2](https://bitbucket.org/cottacush/phalcon-utils/src/cfcedf61b646063f492da547f5fb507753d1939f/?at=1.7.2) (2015-10-15)
 - Fixed issue with slack update text
+
+# [1.7.3](https://bitbucket.org/cottacush/phalcon-utils/src/92bbe76b3f4a5ce07350d8aadda12d724f565d21/?at=1.7.3) (2015-10-15)
+- Finally Fixed issue with Slack Channel Release Updates
