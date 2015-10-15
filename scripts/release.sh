@@ -42,7 +42,9 @@ echo -e "\n# [$release_version](https://bitbucket.org/cottacush/phalcon-utils/sr
 
 echo "Please add release change logs"
 
-if command_exists sublime ; then
+sublime -v &> /dev/null
+
+if [ $? -eq 1 ]; then
     sublime -w ${script_dir}/../CHANGELOG.md
 else
     vim ${script_dir}/../CHANGELOG.md
@@ -63,11 +65,5 @@ git push origin master
 git checkout develop
 
 echo "Release done"
-
-
-
-command_exists () {
-    type "$1" &> /dev/null ;
-}
 
 
