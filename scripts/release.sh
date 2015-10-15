@@ -10,7 +10,7 @@ echo "Please enter release version (current version is $current_version):"
 
 read release_version
 
-php bump_composer_version.php ${release_version}
+php ./bump_composer_version.php ${release_version}
 
 git add composer.json
 
