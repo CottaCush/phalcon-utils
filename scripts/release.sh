@@ -40,7 +40,7 @@ latest_git_commit_id=`git rev-list --tags --max-count=1`
 today=`date +'%Y-%m-%d'`
 echo -e "\n\n# [$release_version](https://bitbucket.org/cottacush/phalcon-utils/src/$latest_git_commit_id/?at=$release_version) ($today)" >> ${script_dir}/../CHANGELOG.md
 
-sublime -w ../${script_dir}/CHANGELOG.md
+sublime -w ${script_dir}/../CHANGELOG.md
 
 git add CHANGELOG.md
 
