@@ -29,7 +29,7 @@ echo "Please enter tag message for $release_version"
 
 read tag_message
 
-git tag -a ${release_version} -m ${tag_message}
+git tag -a ${release_version} -m "${tag_message}"
 
 git push --tags
 
