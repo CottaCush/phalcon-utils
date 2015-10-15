@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+function run(){
+
 git checkout develop
 
 git pull origin develop
@@ -62,15 +64,19 @@ git push origin master
 
 git checkout develop
 
-slack_update=`git diff  --no-ext-diff --unified=0 --exit-code -a --no-prefix ${latest_git_commit_id}..HEAD ${script_dir}/../CHANGELOG.md | egrep "^\+"`
-echo ${slack_update} >> ${script_dir}/slack_update.temp
-slack_update=`sed  's .  ' ${script_dir}/slack_update.temp`
-echo ${slack_update} > ${script_dir}/slack_update.temp
-slack_update=`tail -n +3 ${script_dir}/slack_update.temp`
-rm ${script_dir}/slack_update.temp
+git diff  --no-ext-diff --unified=0 --exit-code -a --no-prefix ${latest_git_commit_id}..HEAD ${script_dir}/../CHANGELOG.md | egrep "^\+" >> ${script_dir}/slack_update.temp
+sed  's .  ' ${script_dir}/slack_update.temp > ${script_dir}/slack_update_2.temp
+tail -n +3 ${script_dir}/slack_update_2.temp > ${script_dir}/slack_update.temp
+slack_update=`cat ${script_dir}/slack_update.temp`
+rm ${script_dir}/slack*
 
 PAYLOAD="payload={\"channel\": \"#phalcon-utils\", \"username\": \"Phalcon Utils Release Bot\", \"text\": \"Phalcon Utils $release_version released \n\n $slack_update\", \"icon_emoji\": \":rat:\"}";
 curl -s -S -X POST --data-urlencode "$PAYLOAD" https://hooks.slack.com/services/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
 
+echo " "
+
 echo "Release done"
 
+}
+
+run
