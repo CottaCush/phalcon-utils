@@ -10,7 +10,8 @@ echo "Please enter release version (current version is $current_version):"
 
 read release_version
 
-php ./bump_composer_version.php ${release_version}
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+php ${script_dir}/bump_composer_version.php ${release_version}
 
 git add composer.json
 
