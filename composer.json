@@ -4,7 +4,7 @@
   "keywords": ["phalcon", "library", "utils", "cottacush", "mailer", "validation"],
   "homepage": "https://bitbucket.org/cottacush/phalcon-utils#readme",
   "type": "library",
-  "version" : "1.7.0",
+  "version" : "1.7.1",
   "authors": [
     {
       "name": "Adeyemi Olaoye",
