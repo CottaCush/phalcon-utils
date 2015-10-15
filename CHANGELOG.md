@@ -32,3 +32,6 @@
 
 # [1.6.0](https://bitbucket.org/cottacush/phalcon-utils/src/0de102641434bcc71edd14301550c8c5d3611f95/?at=1.6.0) (2015-10-15)
 - Modified release script to allow change log updates
+
+# [1.7.0](https://bitbucket.org/cottacush/phalcon-utils/src/22ce34027e692446302080cfbec994b11abf035d/?at=1.7.0) (2015-10-15)
+- Added Slack update to release script
