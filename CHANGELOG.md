@@ -26,3 +26,6 @@
 
 # [1.4.0](https://bitbucket.org/cottacush/phalcon-utils/src/567f3852e58966daa62e23bae624c1d8b43e42f6/?at=1.4.0) (2015-10-14)
 - Added `PhalconUtils/Validation/Validators/NigerianPhoneNumber` to validate Nigerian phone numbers
+
+# [1.5.0](https://bitbucket.org/cottacush/phalcon-utils/src/401a534f1125d2c9d433da12912c0f9545ba8d9a/?at=1.5.0) (2015-10-15)
+- Added release script to help automate release process
