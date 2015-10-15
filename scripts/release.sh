@@ -42,9 +42,7 @@ echo -e "\n# [$release_version](https://bitbucket.org/cottacush/phalcon-utils/sr
 
 echo "Please add release change logs"
 
-sublime -v &> /dev/null
-
-if [ $? -eq 1 ]; then
+if hash sublime 2>/dev/null; then
     sublime -w ${script_dir}/../CHANGELOG.md
 else
     vim ${script_dir}/../CHANGELOG.md
