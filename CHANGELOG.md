@@ -29,3 +29,6 @@
 
 # [1.5.0](https://bitbucket.org/cottacush/phalcon-utils/src/401a534f1125d2c9d433da12912c0f9545ba8d9a/?at=1.5.0) (2015-10-15)
 - Added release script to help automate release process
+
+# [1.6.0](https://bitbucket.org/cottacush/phalcon-utils/src/0de102641434bcc71edd14301550c8c5d3611f95/?at=1.6.0) (2015-10-15)
+- Modified release script to allow change log updates
