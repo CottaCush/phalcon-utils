@@ -35,3 +35,6 @@
 
 # [1.7.0](https://bitbucket.org/cottacush/phalcon-utils/src/22ce34027e692446302080cfbec994b11abf035d/?at=1.7.0) (2015-10-15)
 - Added Slack update to release script
+
+# [1.7.1](https://bitbucket.org/cottacush/phalcon-utils/src/2e32b66fb30ee8baffef8a2a290eb3e2a7921da0/?at=1.7.1) (2015-10-15)
+- Fixed issue with slack channel update
