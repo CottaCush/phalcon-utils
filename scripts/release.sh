@@ -40,7 +40,13 @@ latest_git_commit_id=`git rev-list --tags --max-count=1`
 today=`date +'%Y-%m-%d'`
 echo -e "\n\n# [$release_version](https://bitbucket.org/cottacush/phalcon-utils/src/$latest_git_commit_id/?at=$release_version) ($today)" >> ${script_dir}/../CHANGELOG.md
 
-sublime -w ../${script_dir}/CHANGELOG.md
+echo "Please add release change logs"
+
+if command_exists sublime ; then
+    sublime -w ${script_dir}/../CHANGELOG.md
+else
+    vim -w ${script_dir}/../CHANGELOG.md
+fi
 
 git add CHANGELOG.md
 
@@ -58,5 +64,10 @@ git checkout develop
 
 echo "Release done"
 
+
+
+command_exists () {
+    type "$1" &> /dev/null ;
+}
 
 
