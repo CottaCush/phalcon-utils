@@ -14,6 +14,7 @@ Features
 Contributors
 ------------
 Adeyemi Olaoye <yemi@cottacush.com>
+Adegoke Obasa <goke@cottacush.com>
 
 
 Requirements

@@ -32,6 +32,10 @@ class Model extends BaseValidator implements ValidatorInterface
         $bind = $this->getOption('bind', []);
         $show_messages = $this->getOption('show_messages', true);
 
+        if(is_null($value)) {
+            return false;
+        }
+
         /** @var \Phalcon\Mvc\Model $model */
         $model = $this->getModel($model_name);
 
