@@ -70,8 +70,8 @@ tail -n +3 ${script_dir}/slack_update_2.temp > ${script_dir}/slack_update.temp
 slack_update=`cat ${script_dir}/slack_update.temp`
 rm ${script_dir}/slack*
 
-PAYLOAD="payload={\"channel\": \"#phalcon-utils\", \"username\": \"Phalcon Utils Release Bot\", \"text\": \"Phalcon Utils $release_version released \n\n $slack_update\", \"icon_emoji\": \":rat:\"}";
-curl -s -S -X POST --data-urlencode "$PAYLOAD" https://hooks.slack.com/services/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
+PAYLOAD="payload={\"channel\": \"#terra\", \"username\": \"Phalcon Utils Release Bot\", \"text\": \"Phalcon Utils $release_version released \n\n $slack_update\", \"icon_emoji\": \":rat:\"}";
+curl -s -S -X POST --data-urlencode "$PAYLOAD" https://hooks.slack.com/services/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
 
 echo " "
 
