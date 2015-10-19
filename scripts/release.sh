@@ -6,6 +6,8 @@ git checkout develop
 
 git pull origin develop
 
+git fetch
+
 latest_git_commit_id=`git rev-list --tags --max-count=1`
 current_version=`git describe --tags ${latest_git_commit_id}`
 echo "Please enter release version (current version is $current_version):"
