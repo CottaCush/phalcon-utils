@@ -47,3 +47,7 @@
 
 # [1.7.4](https://bitbucket.org/cottacush/phalcon-utils/src/35aa45909a618e9bc8fc943a0d0cb6ab7bf2091d/?at=1.7.4) (2015-10-16)
 - Fixed bug in Model Validator
+
+# [1.7.5](https://bitbucket.org/cottacush/phalcon-utils/src/704a161901184018854e785473f68935bb1a822d/?at=1.7.5) (2015-10-19)
+- Fixed null binding bug `PhalconUtils/Validation/Validators/Model`
+- Added `PhalconUtils/Validation/BaseValidation::reset()` to allow for reseting validation after setting data or namespace
