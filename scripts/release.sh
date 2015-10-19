@@ -77,7 +77,7 @@ slack_update=`cat ${script_dir}/slack_update.temp`
 rm ${script_dir}/slack*
 
 PAYLOAD="payload={\"channel\": \"#terra\", \"username\": \"Phalcon Utils Release Bot\", \"text\": \"Phalcon Utils $release_version released \n\n $slack_update\", \"icon_emoji\": \":rat:\"}";
-curl -s -S -X POST --data-urlencode "$PAYLOAD" https://hooks.slack.com/services/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
+curl -s -S -X POST --data-urlencode "$PAYLOAD" https://hooks.slack.com/services/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
 
 echo " "
 
