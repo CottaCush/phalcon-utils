@@ -13,8 +13,8 @@ Features
 
 Contributors
 ------------
-Adeyemi Olaoye <yemi@cottacush.com>
-Adegoke Obasa <goke@cottacush.com>
+* Adeyemi Olaoye <yemi@cottacush.com>
+* Adegoke Obasa <goke@cottacush.com>
 
 
 Requirements
@@ -31,7 +31,7 @@ modify your composer.json
 ```json
     "require": {
         ...
-        "vendor/phalcon-utils": "master"
+        "vendor/phalcon-utils": "dev-master"
         ...
     },
     "repositories": [
