@@ -51,3 +51,7 @@
 # [1.7.5](https://bitbucket.org/cottacush/phalcon-utils/src/704a161901184018854e785473f68935bb1a822d/?at=1.7.5) (2015-10-19)
 - Fixed null binding bug `PhalconUtils/Validation/Validators/Model`
 - Added `PhalconUtils/Validation/BaseValidation::reset()` to allow for reseting validation after setting data or namespace
+
+# [1.8.0](https://bitbucket.org/cottacush/phalcon-utils/src/fd30543349a08e1b504fbd51ee2762e10789bf16/?at=1.8.0) (2015-11-16)
+- Fixed issue with setting data in `PhalconUtils/BaseValidation::validate()`
+- Added PhalconUtils/Validation/Validators/IMEINumber` to allow for IMEI number validation
