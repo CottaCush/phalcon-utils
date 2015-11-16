@@ -32,14 +32,13 @@ class Model extends BaseValidator implements ValidatorInterface
         $bind = $this->getOption('bind', []);
         $show_messages = $this->getOption('show_messages', true);
 
-        if(is_null($value)) {
-            return false;
-        }
-
         /** @var \Phalcon\Mvc\Model $model */
         $model = $this->getModel($model_name);
 
         if (is_null($conditions)) {
+            if (is_null($value)) {
+                return false;
+            }
             $data = $model::findFirst(["id = ?0", "bind" => $value]);
         } else {
             $data = $model::findFirst(['conditions' => $conditions, 'bind' => $bind]);
