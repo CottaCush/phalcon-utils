@@ -100,6 +100,8 @@ abstract class BaseValidation extends Validation
         if (is_null($data)) {
             $data = $this->getData();
         }
+
+        $this->data = $data;
         return !count(parent::validate($data, $entity));
     }
 
@@ -124,7 +126,23 @@ abstract class BaseValidation extends Validation
     public function setData($data)
     {
         $this->data = $data;
+        $this->reset();
     }
+
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     */
+    public function reset(){
+        $this->setValidators([]);
+        $this->initialize();
+    }
+
+    /**
+     * validations setups
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @return mixed
+     */
+    abstract function initialize();
 
     /**
      * @author Adeyemi Olaoye <yemexx1@gmail.com>
@@ -154,16 +172,8 @@ abstract class BaseValidation extends Validation
     public function setNamespace($namespace)
     {
         $this->namespace = $namespace;
-        $this->setValidators([]);
-        $this->initialize();
+        $this->reset();
     }
-
-    /**
-     * validations setups
-     * @author Adeyemi Olaoye <yemi@cottacush.com>
-     * @return mixed
-     */
-    abstract function initialize();
 
     /**
      * @author Adeyemi Olaoye <yemi@cottacush.com>
