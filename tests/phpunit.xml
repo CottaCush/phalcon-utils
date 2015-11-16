@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="true">
-    <testsuite name="User-Auth - Testsuite">
+    <testsuite name="Phalcon-Utils - Testsuite">
         <directory>./</directory>
     </testsuite>
 </phpunit>
