@@ -23,4 +23,4 @@ Running Tests
 * Navigate to the tests directory on your command line
 
 * type ```phpunit``` to execute all tests
-* type ```phpunit testClassName``` to execute a single test, e.g ```phpunit PasswordGenerationTest```
+* type ```phpunit testClassName``` to execute a single test, e.g ```phpunit IMEINumberTest```
