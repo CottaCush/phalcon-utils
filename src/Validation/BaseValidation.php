@@ -100,6 +100,8 @@ abstract class BaseValidation extends Validation
         if (is_null($data)) {
             $data = $this->getData();
         }
+
+        $this->data = $data;
         return !count(parent::validate($data, $entity));
     }
 
