@@ -31,7 +31,6 @@ abstract class BaseValidator extends Validator
      * @param $default_message
      * @param $attribute
      * @param $type
-     * @return bool
      */
     public function addMessageToValidation($validation, $default_message, $attribute, $type)
     {
@@ -40,7 +39,8 @@ abstract class BaseValidator extends Validator
             $message = $default_message;
         }
 
-        $validation->appendMessage(new Message($message, $attribute, $type));
-        return false;
+        if($this->getOption('append_messages', true)) {
+            $validation->appendMessage(new Message($message, $attribute, $type));
+        }
     }
 }
