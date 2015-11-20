@@ -55,3 +55,6 @@
 # [1.8.0](https://bitbucket.org/cottacush/phalcon-utils/src/fd30543349a08e1b504fbd51ee2762e10789bf16/?at=1.8.0) (2015-11-16)
 - Fixed issue with setting data in `PhalconUtils/BaseValidation::validate()`
 - Added PhalconUtils/Validation/Validators/IMEINumber` to allow for IMEI number validation
+
+# [1.9.0](https://bitbucket.org/cottacush/phalcon-utils/src/83c77c3ca0ed269b9716f8f6a86eeb19e6722c2d/?at=1.9.0) (2015-11-20)
+- Allow disabling of messages in validators by setting `append_message` option to `false`
