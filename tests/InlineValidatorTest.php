@@ -34,7 +34,7 @@ class InlineValidatorTest extends UnitTestCase
     }
 
     /**
-     * test valid closure
+     * test valid closure with invalid data
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      */
     public function testValidClosureWithValidData()
@@ -49,10 +49,10 @@ class InlineValidatorTest extends UnitTestCase
     }
 
     /**
-     * test valid closure
+     * test valid closure with invalid data
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      */
-    public function testValidClosureWithInvalidValidData()
+    public function testValidClosureWithInvalidData()
     {
         $validation = new RequestValidation(['number' => 2]);
         $validation->add('number', new InlineValidator([
