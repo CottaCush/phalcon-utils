@@ -8,8 +8,8 @@ use PhalconUtils\Validation\RequestValidation;
 use PhalconUtils\Validation\Validators\IMEINumber;
 
 /**
- * Test Class for User Login
- * Class loginTest
+ * Test Class IMEINumber
+ * Class IMEINumberTest
  * @package Tests
  * @author Tega Oghenekohwo <tega@cottacush.com>
  */
