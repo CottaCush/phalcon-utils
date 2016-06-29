@@ -1,5 +1,5 @@
 {
-  "name" : "phalcon-utils",
+  "name" : "cottacush/phalcon-utils",
   "description" : "Phalcon Utils is a repository for libraries that are used across different phalcon projects.",
   "keywords": ["phalcon", "library", "utils", "cottacush", "mailer", "validation"],
   "homepage": "https://bitbucket.org/cottacush/phalcon-utils#readme",

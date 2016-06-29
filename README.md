@@ -26,25 +26,8 @@ Requirements
 
 Installation
 ------------
-modify your composer.json
 
-```json
-    "require": {
-        ...
-        "vendor/phalcon-utils": "dev-master"
-        ...
-    },
-    "repositories": [
-         ...
-        {
-            "type": "vcs",
-            "url":  " git@bitbucket.org:cottacush/phalcon-utils.git"
-        },
-        ...
-    ]
-```
-
-run `composer update`
+`composer require cottacush/phalcon-utils`
 
 
 
