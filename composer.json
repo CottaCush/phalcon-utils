@@ -10,6 +10,11 @@
       "name": "Adeyemi Olaoye",
       "email": "yemi@cottacush.com",
       "role": "Creator"
+    },
+    {
+      "name": "Adegoke Obasa",
+      "email": "goke@cottacush.com",
+      "role": "Developer"
     }
   ],
   "require": {
@@ -27,6 +32,14 @@
   "autoload": {
     "psr-4": {
       "PhalconUtils\\": "src/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
     }
   }
 }
