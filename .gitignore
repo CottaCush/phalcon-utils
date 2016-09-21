@@ -2,3 +2,5 @@
 .idea/
 vendor/
 release.py
+build
+tests/coverage
