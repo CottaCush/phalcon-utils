@@ -40,11 +40,13 @@ class InlineValidatorTest extends UnitTestCase
     public function testValidClosureWithValidData()
     {
         $validation = new RequestValidation(['number' => 1]);
-        $validation->add('number', new InlineValidator([
+        $validator = new InlineValidator([
             'function' => function () use ($validation) {
                 return $validation->getValue('number') == 1;
             }
-        ]));
+        ]);
+        $validation->add('number', $validator);
+        $this->assertTrue($validator->validate($validation, 'number'));
         $this->assertTrue($validation->validate());
     }
 
@@ -55,12 +57,38 @@ class InlineValidatorTest extends UnitTestCase
     public function testValidClosureWithInvalidData()
     {
         $validation = new RequestValidation(['number' => 2]);
-        $validation->add('number', new InlineValidator([
+        $validator = new InlineValidator([
             'function' => function () use ($validation) {
                 return $validation->getValue('number') == 1;
             }
-        ]));
+        ]);
+        $validation->add('number', $validator);
+        $this->assertFalse($validator->validate($validation, 'number'));
         $this->assertFalse($validation->validate());
     }
 
+    public function testCancelOnFail()
+    {
+        $validation = new RequestValidation(['number1' => 1, 'number2' => 2]);
+        $validator1 = new InlineValidator([
+            'function' => function () use ($validation) {
+                return $validation->getValue('number1') == 0;
+            },
+            'cancelOnFail' => true,
+            'message' => 'invalid number1 supplied'
+        ]);
+
+        $validator2 = new InlineValidator([
+            'function' => function () use ($validation) {
+                return $validation->getValue('number2') == 0;
+            },
+            'message' => 'invalid number2 supplied'
+        ]);
+
+        $validation->add('number1', $validator1);
+        $validation->add('number2', $validator2);
+
+        $this->assertFalse($validation->validate());
+        $this->assertEquals($validation->getMessages(), 'invalid number1 supplied');
+    }
 }
