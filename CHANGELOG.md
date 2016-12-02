@@ -62,3 +62,6 @@
 # [1.10.0](https://bitbucket.org/cottacush/phalcon-utils/src/4c20cb91547fcbd56b2f1e093586a943239e40d4/?at=1.10.0) (2015-11-22)
 - Added `PhalconUtils\Validation\Validators\InlineValidator` to allow for inline validations using closures
 
+# [1.10.0](https://bitbucket.org/cottacush/phalcon-utils/src/4c20cb91547fcbd56b2f1e093586a943239e40d4/?at=1.10.0) (2016-12-02)
+- Fix issue with `cancelOnFail` not working for InlineValidator
+
