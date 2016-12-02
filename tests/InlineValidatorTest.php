@@ -40,11 +40,13 @@ class InlineValidatorTest extends UnitTestCase
     public function testValidClosureWithValidData()
     {
         $validation = new RequestValidation(['number' => 1]);
-        $validation->add('number', new InlineValidator([
+        $validator = new InlineValidator([
             'function' => function () use ($validation) {
                 return $validation->getValue('number') == 1;
             }
-        ]));
+        ]);
+        $validation->add('number', $validator);
+        $this->assertTrue($validator->validate($validation, 'number'));
         $this->assertTrue($validation->validate());
     }
 
@@ -55,12 +57,13 @@ class InlineValidatorTest extends UnitTestCase
     public function testValidClosureWithInvalidData()
     {
         $validation = new RequestValidation(['number' => 2]);
-        $validation->add('number', new InlineValidator([
+        $validator = new InlineValidator([
             'function' => function () use ($validation) {
                 return $validation->getValue('number') == 1;
             }
-        ]));
+        ]);
+        $validation->add('number', $validator);
+        $this->assertFalse($validator->validate($validation, 'number'));
         $this->assertFalse($validation->validate());
     }
-
 }

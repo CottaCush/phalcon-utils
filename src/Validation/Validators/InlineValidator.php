@@ -1,6 +1,7 @@
 <?php
 
 namespace PhalconUtils\Validation\Validators;
+
 use PhalconUtils\Exceptions\ValidatorException;
 
 /**
@@ -22,12 +23,15 @@ class InlineValidator extends BaseValidator
     {
         $function = $this->getOption('function');
 
-        if(!($function instanceof \Closure)){
+        if (!($function instanceof \Closure)) {
             throw new ValidatorException('Option function must be a closure');
         }
 
-        if(!call_user_func($function)){
+        if (!call_user_func($function)) {
             $this->addMessageToValidation($validation, 'Invalid :field supplied', $attribute, '');
+            return false;
         }
+
+        return true;
     }
 }
