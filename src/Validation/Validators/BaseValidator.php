@@ -3,10 +3,9 @@
 namespace PhalconUtils\Validation\Validators;
 
 use Phalcon\Mvc\Model;
-use Phalcon\Validation;
-use Phalcon\Validation\Message;
 use Phalcon\Validation\Validator;
 use PhalconUtils\Validation\BaseValidation;
+use PhalconUtils\Validation\CustomMessage;
 use ReflectionClass;
 
 /**
@@ -39,8 +38,9 @@ abstract class BaseValidator extends Validator
             $message = $default_message;
         }
 
-        if($this->getOption('append_messages', true)) {
-            $validation->appendMessage(new Message($message, $attribute, $type));
+        if ($this->getOption('append_messages', true)) {
+            $code = $this->getOption('code', null);
+            $validation->appendMessage(new CustomMessage($message, $attribute, $type, $code));
         }
     }
 }
