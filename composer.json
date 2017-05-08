@@ -15,13 +15,18 @@
       "name": "Adegoke Obasa",
       "email": "goke@cottacush.com",
       "role": "Developer"
+    },
+    {
+      "name": "Olawale Lawal",
+      "email": "wale@cottacush.com",
+      "role": "Developer"
     }
   ],
   "require": {
-    "php": ">=5.3.3",
-    "ext-phalcon" : ">=2.0.0",
+    "php": ">=5.6",
+    "ext-phalcon" : "^2.0",
     "swiftmailer/swiftmailer": "@stable",
-    "phalcon/incubator": "2.0.8",
+    "phalcon/incubator": "^2.0.13",
     "aws/aws-sdk-php": "^3.3"
   },
 

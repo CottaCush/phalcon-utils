@@ -19,6 +19,7 @@ $ composer require cottacush/phalcon-utils
 * Mailer - Mail sending library
 * S3 - AWS S3 library
 * Validation - Custom Validators and Validation Utils
+* Pagination - Custom pagination to handle `GROUP BY`
 
 ## Usage
 
