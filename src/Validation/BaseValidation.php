@@ -4,7 +4,6 @@ namespace PhalconUtils\Validation;
 
 use Phalcon\Validation;
 use Phalcon\Validation\MessageInterface;
-use Phalcon\Validation\Validator;
 use Phalcon\Validation\Validator\PresenceOf;
 
 /**
@@ -52,8 +51,12 @@ abstract class BaseValidation extends Validation
      * @param string $connector
      * @return mixed|string
      */
-    private function getSentenceFromArray(array $words, $twoWordsConnector = ' and ', $lastWordConnector = null, $connector = ', ')
-    {
+    private function getSentenceFromArray(
+        array $words,
+        $twoWordsConnector = ' and ',
+        $lastWordConnector = null,
+        $connector = ', '
+    ) {
         if ($lastWordConnector === null) {
             $lastWordConnector = $twoWordsConnector;
         }
@@ -113,7 +116,7 @@ abstract class BaseValidation extends Validation
         if (!is_null($this->namespace) && !is_null($this->data)) {
             if (is_array($this->data) && isset($data[$this->namespace])) {
                 return $data[$this->namespace];
-            } else if (is_object($this->data) && property_exists($this->data, $this->namespace)) {
+            } elseif (is_object($this->data) && property_exists($this->data, $this->namespace)) {
                 return $this->data->{$this->namespace};
             }
         }
@@ -132,7 +135,8 @@ abstract class BaseValidation extends Validation
     /**
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      */
-    public function reset(){
+    public function reset()
+    {
         $this->setValidators([]);
         $this->initialize();
     }
@@ -142,7 +146,7 @@ abstract class BaseValidation extends Validation
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      * @return mixed
      */
-    abstract function initialize();
+    abstract public function initialize();
 
     /**
      * @author Adeyemi Olaoye <yemexx1@gmail.com>
@@ -152,8 +156,12 @@ abstract class BaseValidation extends Validation
     public function appendMessage(MessageInterface $message)
     {
         if (!is_null($this->namespace)) {
-            $message->setMessage(str_replace($message->getField(), $this->namespace . '.' . $message->getField(), $message->getMessage()));
-            $message->setMessage(str_replace(':field', $this->namespace . '.' . $message->getField(), $message->getMessage()));
+            $message->setMessage(
+                str_replace($message->getField(), $this->namespace . '.' . $message->getField(), $message->getMessage())
+            );
+            $message->setMessage(
+                str_replace(':field', $this->namespace . '.' . $message->getField(), $message->getMessage())
+            );
         }
         return parent::appendMessage($message);
     }
@@ -185,9 +193,21 @@ abstract class BaseValidation extends Validation
         $data = $this->getData();
         if (is_array($data) && isset($data[$attribute])) {
             return $data[$attribute];
-        } else if (is_object($data) && property_exists($data, $attribute)) {
+        } elseif (is_object($data) && property_exists($data, $attribute)) {
             return $data->{$attribute};
         }
         return null;
+    }
+
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @return null | string
+     */
+    public function getLastErrorCode()
+    {
+        $messages = parent::getMessages();
+        /** @var CustomMessage $message */
+        $message = $messages->offsetGet($messages->count() - 1);
+        return $message->getCode();
     }
 }
