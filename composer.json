@@ -24,12 +24,10 @@
   ],
   "require": {
     "php": ">=5.6",
-    "ext-phalcon" : "^2.0.",
+    "ext-phalcon" : "^2.0",
     "swiftmailer/swiftmailer": "@stable",
     "phalcon/incubator": "^2.0.13",
-    "aws/aws-sdk-php": "^3.3",
-    "league/fractal": "^0.13.0",
-    "pagerfanta/pagerfanta": "^1.0"
+    "aws/aws-sdk-php": "^3.3"
   },
 
   "require-dev": {
