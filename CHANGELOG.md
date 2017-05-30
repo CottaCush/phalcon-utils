@@ -67,3 +67,6 @@
 
 # [1.11.0](https://github.com/CottaCush/phalcon-utils/releases/tag/1.11.0) (2017-05-02)
 - Added optional `code` Validator options 
+
+# [2.0.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.0.0) (2017-05-30)
+- Update dependencies to support PHP >=7.0 and Phalcon >=3.0
