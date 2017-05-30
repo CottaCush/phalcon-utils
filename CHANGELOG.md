@@ -70,3 +70,6 @@
 
 # [2.0.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.0.0) (2017-05-30)
 - Update dependencies to support PHP >=7.0 and Phalcon >=3.0
+
+# [2.0.1](https://github.com/CottaCush/phalcon-utils/releases/tag/2.0.1) (2017-05-30)
+- Update PHPUnit Version to support PHP versions lower than 7
