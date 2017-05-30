@@ -4,3 +4,4 @@ vendor/
 release.py
 build
 tests/coverage
+composer.lock
