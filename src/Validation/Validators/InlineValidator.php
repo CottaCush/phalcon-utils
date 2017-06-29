@@ -27,8 +27,17 @@ class InlineValidator extends BaseValidator
             throw new ValidatorException('Option function must be a closure');
         }
 
-        if (!call_user_func($function)) {
-            $this->addMessageToValidation($validation, 'Invalid :field supplied', $attribute, '');
+        $response = call_user_func($function, $validation);
+
+        if (is_string($response)) {
+            $this->setOption('message', null);
+            $message = $response;
+        } else {
+            $message = 'Invalid :field supplied';
+        }
+
+        if ($response !== true) {
+            $this->addMessageToValidation($validation, $message, $attribute, '');
             return false;
         }
 

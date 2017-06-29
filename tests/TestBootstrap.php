@@ -1,8 +1,6 @@
 <?php
-use Phalcon\DI;
-use Phalcon\DI\FactoryDefault;
 
-ini_set('display_errors',1);
+ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 define('ROOT_PATH', __DIR__);
@@ -15,6 +13,7 @@ $env = getenv('APPLICATION_ENVIRONMENT');
 
 // Required for phalcon/incubator
 include __DIR__ . "/../vendor/autoload.php";
+include_once __DIR__ . '/stubs/CommonValidationsImpl.php';
 
 /**
  * Read the configuration
