@@ -191,7 +191,7 @@ trait CommonValidations
      *          ]
      *      ]
      * ];
-     *  $this->commonValidationsObj->validateArrayElements(
+     *  $this->validateArrayElements(
      *            'numbers',
      *        ['one' => new InlineValidator([
      *              'function' => function ($validation) {
@@ -289,7 +289,7 @@ trait CommonValidations
      *     'random_integer' => '123123',
      * ];
      *
-     * $this->isNotEmpty('empty_array');
+     * $this->validateBooleanValue('boolean_true');
      * </code>
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      * @param $field
