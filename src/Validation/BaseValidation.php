@@ -35,7 +35,9 @@ abstract class BaseValidation extends Validation
     {
         $messages = [];
 
-        foreach (parent::getMessages() as $message) {
+        $parentMessages = parent::getMessages() ?: [];
+
+        foreach ($parentMessages as $message) {
             $messages[] = $message->getMessage();
         }
         return $this->getSentenceFromArray($messages);
@@ -56,7 +58,8 @@ abstract class BaseValidation extends Validation
         $twoWordsConnector = ' and ',
         $lastWordConnector = null,
         $connector = ', '
-    ) {
+    )
+    {
         if ($lastWordConnector === null) {
             $lastWordConnector = $twoWordsConnector;
         }
@@ -139,6 +142,7 @@ abstract class BaseValidation extends Validation
     {
         $this->setValidators([]);
         $this->initialize();
+        $this->_messages = [];
     }
 
     /**

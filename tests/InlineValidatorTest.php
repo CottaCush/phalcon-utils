@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-
 use Phalcon\Exception;
 use Phalcon\Test\UnitTestCase;
 use PhalconUtils\Exceptions\ValidatorException;
@@ -90,5 +89,26 @@ class InlineValidatorTest extends UnitTestCase
 
         $this->assertFalse($validation->validate());
         $this->assertEquals($validation->getMessages(), 'invalid number1 supplied');
+    }
+
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     */
+    public function testCustomMessageFromClosure()
+    {
+        $validation = new RequestValidation(['number' => 1]);
+        $validator = new InlineValidator([
+            'function' => function () use ($validation) {
+                if ($validation->getValue('number') != 0) {
+                    return 'Number must be equal to zero';
+                }
+
+                return true;
+            },
+            'message' => 'invalid number supplied'
+        ]);
+        $validation->add('number', $validator);
+        $validation->validate();
+        $this->assertEquals('Number must be equal to zero', $validation->getMessages());
     }
 }

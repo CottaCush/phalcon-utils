@@ -73,3 +73,9 @@
 
 # [2.0.1](https://github.com/CottaCush/phalcon-utils/releases/tag/2.0.1) (2017-05-30)
 - Update PHPUnit Version to support PHP versions lower than 7
+
+# [2.1.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.0.2) (2017-06-29)
+- Add CommonValidations to handle common data validations
+- Allow custom messages for `PhalconUtils\Validation\Validators\InlineValidator`
+- Pass Validation object into `PhalconUtils\Validation\Validators\InlineValidator` closure
+- Add `PhalconUtils\Util\ArrayUtils` with commonly used array functions
