@@ -26,10 +26,10 @@ class RequestLoggerMiddleware extends BaseMiddleware
 
         $logger = new Logger($config->application->logsDir . "requests.log");
 
-        $logger->log('Request URL:' . $request->getURI(), Logger::INFO);
+        $logger->log('Request URL:' . $request->getURI(), \Phalcon\Logger::INFO);
         if ($request->isPost() || $request->isPut()) {
             $rawBody = $request->getRawBody();
-            $logger->log('Request Body: ' . $rawBody, Logger::INFO);
+            $logger->log('Request Body: ' . $rawBody, \Phalcon\Logger::INFO);
         }
     }
 
