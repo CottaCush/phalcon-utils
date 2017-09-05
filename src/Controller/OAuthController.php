@@ -11,7 +11,7 @@ use PhalconUtils\Constants\ResponseCodes;
  * @author Adeyemi Olaoye <yemi@cottacush.com>
  * @package PhalconUtils\Controller
  */
-class OAuthController
+class OAuthController extends BaseController
 {
     /**
      * Get access token
