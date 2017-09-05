@@ -9,7 +9,7 @@ namespace PhalconUtils\Constants;
  */
 class ResponseMessages
 {
-    private static $messages = [
+    public static $messages = [
         ResponseCodes::METHOD_NOT_IMPLEMENTED => 'method not implemented',
         ResponseCodes::INTERNAL_SERVER_ERROR => 'An internal server error occurred',
         ResponseCodes::UNEXPECTED_ERROR => 'An unexpected error occurred',
