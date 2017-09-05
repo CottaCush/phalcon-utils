@@ -1,12 +1,12 @@
 <?php
 namespace PhalconUtils\Controller;
 
-use App\Library\Response;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Model\Resultset;
 use PhalconUtils\Constants\HttpStatusCodes;
 use PhalconUtils\Constants\ResponseCodes;
 use PhalconUtils\Constants\StatusConstants;
+use PhalconUtils\Http\Response;
 use stdClass;
 
 /**

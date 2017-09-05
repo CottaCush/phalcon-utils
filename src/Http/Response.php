@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Library;
+namespace PhalconUtils\Http;
 
-use App\Interfaces\JSend;
-use PhalconUtils\Constants\HttpStatusCodes;
 use Phalcon\Http\Response as PhalconResponse;
+use PhalconUtils\Constants\HttpStatusCodes;
 use PhalconUtils\Constants\ResponseMessages;
 
 /**

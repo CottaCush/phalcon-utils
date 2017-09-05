@@ -2,12 +2,12 @@
 
 namespace PhalconUtils\Middleware;
 
-use App\Library\Response;
 use OAuth2\Request;
 use OAuth2\Server;
 use Phalcon\Mvc\Micro;
 use PhalconUtils\Constants\ResponseCodes;
 use PhalconUtils\Constants\Services;
+use PhalconUtils\Http\Response;
 
 /**
  * Class OAuthMiddleware
@@ -25,7 +25,7 @@ class OAuthMiddleware extends BaseMiddleware
         /** @var Server $oauthServer */
         $oauthServer = $params = $this->getDI()->get(Services::OAUTH_SERVER);
 
-        /** @var Response $response */
+        /** @var \PhalconUtils\Http\Response $response */
         $response = $this->getDI()->get(Services::RESPONSE);
         if (!$oauthServer->verifyResourceRequest(new Request($this->getDI()->get(Services::REQUEST)->getQuery()))) {
             $oauthServerResponse = $oauthServer->getResponse();
