@@ -41,13 +41,15 @@
     "redound/phalcon-rest": "^1.4.0",
     "pagerfanta/pagerfanta": "^1.0",
     "bshaffer/oauth2-server-php": "^1.8",
-    "league/fractal": "^0.13.0"
+    "league/fractal": "^0.13.0",
+    "xamin/handlebars.php": "^0.10.4"
   },
   "suggest": {
     "redound/phalcon-rest": "Install Phalcon Rest for REST app bootstrap support",
     "pagerfanta/pagerfanta": "Install  Pagerfanta for Pagination support",
     "bshaffer/oauth2-server-php": "Install Bshaffer Oauth Server for OAuth2 support",
-    "league/fractal": "Install Fractal for transformer support"
+    "league/fractal": "Install Fractal for transformer support",
+    "xamin/handlebars.php": "Install Handlebars for text replacement"
   },
   "autoload": {
     "psr-4": {
