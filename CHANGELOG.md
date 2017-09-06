@@ -74,8 +74,21 @@
 # [2.0.1](https://github.com/CottaCush/phalcon-utils/releases/tag/2.0.1) (2017-05-30)
 - Update PHPUnit Version to support PHP versions lower than 7
 
-# [2.1.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.0.2) (2017-06-29)
+# [2.1.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.1.0) (2017-06-29)
 - Add CommonValidations to handle common data validations
 - Allow custom messages for `PhalconUtils\Validation\Validators\InlineValidator`
 - Pass Validation object into `PhalconUtils\Validation\Validators\InlineValidator` closure
 - Add `PhalconUtils\Util\ArrayUtils` with commonly used array functions
+
+# [2.2.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.2.0) (2017-09-06)
+- Added `PhalconUtils\Bootstrap\Bootstrap` and `PhalconUtils\Bootstrap\BootstrapInterface` to allow for adding Bootstrap plugins
+- Added Console and Default Services Bootstrap
+- Added OAuth2 Route and Service Bootstrap
+- Added Http Client, JSend Interface, BaseGateway and Response
+- Add Services, Status, Status Codes, Response Codes and Response Messages
+- Added BaseMiddleware, OAuthMiddleware and RequestLoggerMiddleware
+- Added Batch for bulk model inserts
+- Added Transformable interface
+- Added Response Data Serializer for consistent response from transformers
+- Added Date, File and Text Utils
+- Added Custom Logger
