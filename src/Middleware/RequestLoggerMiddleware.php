@@ -23,9 +23,11 @@ class RequestLoggerMiddleware extends BaseMiddleware
 
         if (!$logTargets) {
             $fileTarget = new File($config->application->logsDir . 'requests.log');
-            $logger = new Logger([$fileTarget]);
-            $this->logger = $logger;
+            $logTargets = [$fileTarget];
         }
+
+        $this->logger = new Logger($logTargets);
+
     }
 
     public function beforeExecuteRoute()
