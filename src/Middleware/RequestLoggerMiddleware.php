@@ -2,6 +2,7 @@
 
 namespace PhalconUtils\Middleware;
 
+use Phalcon\Logger\Adapter\File;
 use Phalcon\Mvc\Micro;
 use PhalconUtils\Constants\Services;
 use PhalconUtils\Util\Logger;
@@ -24,12 +25,13 @@ class RequestLoggerMiddleware extends BaseMiddleware
 
         $config = $this->getDI()->get(Services::CONFIG);
 
-        $logger = new Logger($config->application->logsDir . "requests.log");
+        $fileTarget = new File($config->application->logsDir . 'requests.log');
+        $logger = new Logger([$fileTarget]);
 
-        $logger->log('Request URL:' . $request->getURI(), \Phalcon\Logger::INFO);
+        $logger->info('Request URL:' . $request->getURI());
         if ($request->isPost() || $request->isPut()) {
             $rawBody = $request->getRawBody();
-            $logger->log('Request Body: ' . $rawBody, \Phalcon\Logger::INFO);
+            $logger->info('Request Body: ' . $rawBody);
         }
     }
 
