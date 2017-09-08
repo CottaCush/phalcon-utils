@@ -27,7 +27,7 @@ class Logger extends AbstractLogger implements LoggerInterface
     public function __construct(array $logTargets, $options = [])
     {
         $this->debugEnabled = ArrayUtils::getValue($options, 'debug', false);
-        $this->logTargets = $logTargets;
+        $this->logTargets = array_filter($logTargets);
 
         foreach ($this->logTargets as $logTarget) {
             if (!($logTarget instanceof LoggerInterface || $logTarget instanceof AdapterInterface)) {
@@ -92,10 +92,11 @@ class Logger extends AbstractLogger implements LoggerInterface
     {
         /** @var LoggerInterface|AdapterInterface $logTarget */
         foreach ($this->logTargets as $logTarget) {
-            if ($logTarget instanceof AdapterInterface) {
-                $level = $this->getPhalconLoggerLevel($level);
+            if (($logTarget instanceof AdapterInterface)) {
+                $logTarget->log($this->getPhalconLoggerLevel($level), $message, $context);
+            } else {
+                $logTarget->log($level, $message, $context);
             }
-            $logTarget->log($level, $message, $context);
         }
     }
 
