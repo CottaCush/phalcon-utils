@@ -34,7 +34,8 @@
     "ext-phalcon": "^3.0",
     "swiftmailer/swiftmailer": "@stable",
     "phalcon/incubator": "^3.0",
-    "aws/aws-sdk-php": "^3.3"
+    "aws/aws-sdk-php": "^3.3",
+    "psr/log": "^1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.5||~6.0",

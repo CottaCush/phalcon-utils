@@ -2,9 +2,12 @@
 
 namespace PhalconUtils\Util;
 
-use Phalcon\Logger\Adapter\File;
 use Phalcon\Http\Client\Response as HttpResponse;
+use Phalcon\Logger\AdapterInterface;
 use PhalconUtils\Http\BaseGateway;
+use PhalconUtils\src\Exceptions\InvalidLoggerConfigException;
+use Psr\Log\AbstractLogger;
+use Psr\Log\LoggerInterface;
 use SoapClient;
 
 /**
@@ -12,14 +15,26 @@ use SoapClient;
  * @author Adeyemi Olaoye <yemi@cottacush.com>
  * @package PhalconUtils\Util
  */
-class Logger extends File
+class Logger extends AbstractLogger implements LoggerInterface
 {
     protected $debugEnabled;
 
-    public function __construct($name, $options = null)
+    /** @var AdapterInterface[] | LoggerInterface[] */
+    protected $logTargets;
+
+    public function __construct(array $logTargets, $options = [])
     {
         $this->debugEnabled = ArrayUtils::getValue($options, 'debug', false);
-        parent::__construct($name, $options);
+        $this->logTargets = $logTargets;
+
+        foreach ($this->logTargets as $logTarget) {
+            if (!($logTarget instanceof LoggerInterface || $logTarget instanceof AdapterInterface)) {
+                throw new InvalidLoggerConfigException(
+                    'Log target must be instance of ' . LoggerInterface::class . ' or ' .
+                    AdapterInterface::class . '; encountered ' . get_class($logTarget)
+                );
+            }
+        }
     }
 
     public function debug($message, array $context = null)
@@ -60,5 +75,22 @@ class Logger extends File
     public function debugHttpServiceResponse(BaseGateway $service, HttpResponse $response)
     {
         $this->debug('Service Response ' . get_class($service) . ':' . var_export($response, true));
+    }
+
+    /**
+     * Logs with an arbitrary level.
+     *
+     * @param mixed $level
+     * @param string $message
+     * @param array $context
+     *
+     * @return void
+     */
+    public function log($level, $message, array $context = [])
+    {
+        /** @var LoggerInterface|AdapterInterface $logTarget */
+        foreach ($this->logTargets as $logTarget) {
+            $logTarget->log($level, $message, $context);
+        }
     }
 }
