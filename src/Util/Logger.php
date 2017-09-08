@@ -3,11 +3,13 @@
 namespace PhalconUtils\Util;
 
 use Phalcon\Http\Client\Response as HttpResponse;
+use Phalcon\Logger as PhalconLogLevel;
 use Phalcon\Logger\AdapterInterface;
 use PhalconUtils\Http\BaseGateway;
 use PhalconUtils\src\Exceptions\InvalidLoggerConfigException;
 use Psr\Log\AbstractLogger;
 use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 use SoapClient;
 
 /**
@@ -90,7 +92,32 @@ class Logger extends AbstractLogger implements LoggerInterface
     {
         /** @var LoggerInterface|AdapterInterface $logTarget */
         foreach ($this->logTargets as $logTarget) {
+            if ($logTarget instanceof AdapterInterface) {
+                $level = $this->getPhalconLoggerLevel($level);
+            }
             $logTarget->log($level, $message, $context);
         }
+    }
+
+    /**
+     * Get Phalcon Log Level from PSR Log level
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param $level
+     * @return null
+     */
+    private function getPhalconLoggerLevel($level)
+    {
+        $levelMap = [
+            LogLevel::INFO => PhalconLogLevel::INFO,
+            LogLevel::DEBUG => PhalconLogLevel::DEBUG,
+            LogLevel::ALERT => PhalconLogLevel::ALERT,
+            LogLevel::CRITICAL => PhalconLogLevel::CRITICAL,
+            LogLevel::EMERGENCY => PhalconLogLevel::EMERGENCY,
+            LogLevel::ERROR => PhalconLogLevel::ERROR,
+            LogLevel::NOTICE => PhalconLogLevel::NOTICE,
+            LogLevel::WARNING => PhalconLogLevel::WARNING
+        ];
+
+        return ArrayUtils::getValue($levelMap, $level, PhalconLogLevel::INFO);
     }
 }
