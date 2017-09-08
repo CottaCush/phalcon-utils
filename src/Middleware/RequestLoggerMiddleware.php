@@ -14,6 +14,20 @@ use PhalconUtils\Util\Logger;
  */
 class RequestLoggerMiddleware extends BaseMiddleware
 {
+    /** @var  Logger */
+    protected $logger;
+
+    public function __construct($logTargets = [])
+    {
+        $config = $this->getDI()->get(Services::CONFIG);
+
+        if (!$logTargets) {
+            $fileTarget = new File($config->application->logsDir . 'requests.log');
+            $logger = new Logger([$fileTarget]);
+            $this->logger = $logger;
+        }
+    }
+
     public function beforeExecuteRoute()
     {
         if ($this->isExcludedPath($this->getDI()->get(Services::CONFIG)->requestLogger->excluded_paths)) {
@@ -23,15 +37,10 @@ class RequestLoggerMiddleware extends BaseMiddleware
         /** @var \Phalcon\Http\Request $request */
         $request = $this->getDI()->get(Services::REQUEST);
 
-        $config = $this->getDI()->get(Services::CONFIG);
-
-        $fileTarget = new File($config->application->logsDir . 'requests.log');
-        $logger = new Logger([$fileTarget]);
-
-        $logger->info('Request URL:' . $request->getURI());
+        $this->logger->info('Request URL:' . $request->getURI());
         if ($request->isPost() || $request->isPut()) {
             $rawBody = $request->getRawBody();
-            $logger->info('Request Body: ' . $rawBody);
+            $this->logger->info('Request Body: ' . $rawBody);
         }
     }
 

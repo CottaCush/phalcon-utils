@@ -92,3 +92,7 @@
 - Added Response Data Serializer for consistent response from transformers
 - Added Date, File and Text Utils
 - Added Custom Logger
+
+# [2.3.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.3.0) (2017-09-08)
+- Add Multiple Logging targets
+- Allow Multiple log targets for request logger middleware
