@@ -39,7 +39,7 @@ class Logger extends AbstractLogger implements LoggerInterface
         }
     }
 
-    public function debug($message, array $context = null)
+    public function debug($message, array $context = [])
     {
         if (!$this->debugEnabled) {
             return;
