@@ -96,3 +96,6 @@
 # [2.3.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.3.0) (2017-09-08)
 - Add Multiple Logging targets
 - Allow Multiple log targets for request logger middleware
+
+# [2.3.1](https://github.com/CottaCush/phalcon-utils/releases/tag/2.3.1) (2017-09-18)
+- Fix issue with Logger debug context default
