@@ -99,3 +99,8 @@
 
 # [2.3.1](https://github.com/CottaCush/phalcon-utils/releases/tag/2.3.1) (2017-09-18)
 - Fix issue with Logger debug context default
+
+# [2.4.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.4.0) (2017-09-19)
+- Add BaseModel functions
+- Add method to format phone number to international format
+- Add TextUtils method to convert string to hexadecimal
