@@ -59,4 +59,18 @@ class TextUtils
         return  '+' . $countryCode . $actualNumber;
 
     }
+
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param $string
+     * @return string
+     */
+    public static function convertStringToHexadecimal($string)
+    {
+        $hex = '';
+        for ($i = 0; $i < strlen($string); $i++) {
+            $hex .= dechex(ord($string[$i]));
+        }
+        return $hex;
+    }
 }
