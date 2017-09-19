@@ -70,6 +70,41 @@ class BaseGateway
 
     /**
      * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param $response HttpResponse
+     * @param bool $default
+     * @param bool $convertToArray
+     * @param int $successCode
+     * @return mixed
+     */
+    public function decodeXMLResponse($response, $default = false, $convertToArray = false, $successCode = 200)
+    {
+        if (!($response instanceof HttpResponse)) {
+            $this->logger->error(get_called_class() . ' Service Error: ' . $response);
+            $this->lastError = $response;
+            return $default;
+        }
+
+        if (!HttpClient::isSuccessful($response, $successCode)) {
+            $this->logger->error(get_called_class() . ' Service Error: ' . $response->body);
+            $this->lastError = $response->body;
+            return $default;
+        }
+
+        if ($convertToArray) {
+            $decodedResponse = json_decode(json_encode(simplexml_load_string($response->body), LIBXML_NOCDATA), 1);
+        } else {
+            return $response->body;
+        }
+
+        if (!$decodedResponse) {
+            return $default;
+        }
+
+        return $decodedResponse;
+    }
+
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
      * @return mixed
      */
     public function getLastError()
