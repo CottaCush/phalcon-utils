@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace PhalconUtils\Model;
 
 use App\Library\PaginationAdapter;
 use League\Fractal\Pagination\PagerfantaPaginatorAdapter;
@@ -17,7 +17,6 @@ use Phalcon\Mvc\Model\Manager as ModelsManager;
 use Phalcon\Mvc\Model\RelationInterface;
 use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 use PhalconUtils\Constants\Services;
-use PhalconUtils\Model\Batch;
 use PhalconUtils\Util\DateUtils;
 
 /**

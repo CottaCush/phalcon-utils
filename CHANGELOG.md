@@ -104,3 +104,6 @@
 - Add BaseModel functions
 - Add method to format phone number to international format
 - Add TextUtils method to convert string to hexadecimal
+
+# [2.4.1](https://github.com/CottaCush/phalcon-utils/releases/tag/2.4.1) (2017-09-19)
+- Fix namespace for Base Model
