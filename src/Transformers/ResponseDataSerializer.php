@@ -1,6 +1,6 @@
 <?php
 
-namespace PhalconUtils\Transformer;
+namespace PhalconUtils\Transformers;
 
 use League\Fractal\Serializer\ArraySerializer;
 

@@ -15,4 +15,5 @@ class Services extends PhalconRestServices
     const OAUTH_SERVER = 'oauthServer';
     const LOGGER = 'logger';
     const CONSOLE = 'console';
+    const FRACTAL_MANAGER = 'fractal';
 }
