@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace PhalconUtils\Controller;
 
 use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
@@ -8,8 +8,7 @@ use League\Fractal\Resource\Item;
 use Phalcon\Mvc\Model\EagerLoading\Loader;
 use Phalcon\Mvc\Model\EagerLoadingTrait;
 use Phalcon\Mvc\Model\Resultset;
-use PhalconUtils\Controller\BaseController;
-use PhalconUtils\Transformer\Transformable;
+use PhalconUtils\Transformers\Transformable;
 
 /**
  * Class FractalController
