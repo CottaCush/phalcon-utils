@@ -107,3 +107,6 @@
 
 # [2.4.1](https://github.com/CottaCush/phalcon-utils/releases/tag/2.4.1) (2017-09-19)
 - Fix namespace for Base Model
+
+# [2.4.2](https://github.com/CottaCush/phalcon-utils/releases/tag/2.4.2) (2017-09-21)
+- Fix namespace for Fractal Controller and Transformer classes
