@@ -110,3 +110,6 @@
 
 # [2.4.2](https://github.com/CottaCush/phalcon-utils/releases/tag/2.4.2) (2017-09-21)
 - Fix namespace for Fractal Controller and Transformer classes
+
+# [2.4.3](https://github.com/CottaCush/phalcon-utils/releases/tag/2.4.3) (2017-09-22)
+- Fix issue with international phone number formatting

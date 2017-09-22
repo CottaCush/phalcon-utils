@@ -17,8 +17,7 @@ class TextUtilsTest extends \UnitTestCase
         $internationalNumber = TextUtils::formatPhoneNumberToInternationalFormat(
             '234',
             '08111111111',
-            10,
-            '0'
+            10
         );
 
         $this->assertEquals('+2348111111111', $internationalNumber);
@@ -26,26 +25,23 @@ class TextUtilsTest extends \UnitTestCase
         $internationalNumber = TextUtils::formatPhoneNumberToInternationalFormat(
             '234',
             '8111111111',
-            10,
-            '0'
+            10
         );
 
         $this->assertEquals('+2348111111111', $internationalNumber);
 
         $internationalNumber = TextUtils::formatPhoneNumberToInternationalFormat(
             '234',
-            '+2348111111111',
-            10,
-            '0'
+            '+2348000000000',
+            10
         );
 
-        $this->assertEquals('+2348111111111', $internationalNumber);
+        $this->assertEquals('+2348000000000', $internationalNumber);
 
         $internationalNumber = TextUtils::formatPhoneNumberToInternationalFormat(
             '234',
             '23408111111111',
-            10,
-            '0'
+            10
         );
 
         $this->assertEquals('+2348111111111', $internationalNumber);
@@ -53,8 +49,7 @@ class TextUtilsTest extends \UnitTestCase
         $internationalNumber = TextUtils::formatPhoneNumberToInternationalFormat(
             '234',
             '+23408111111111',
-            10,
-            '0'
+            10
         );
 
         $this->assertEquals('+2348111111111', $internationalNumber);
