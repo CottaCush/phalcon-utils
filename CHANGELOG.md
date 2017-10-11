@@ -113,3 +113,6 @@
 
 # [2.4.3](https://github.com/CottaCush/phalcon-utils/releases/tag/2.4.3) (2017-09-22)
 - Fix issue with international phone number formatting
+
+# [2.4.4](https://github.com/CottaCush/phalcon-utils/releases/tag/2.4.4) (2017-10-11)
+- Fix issue with undefined not found response code constant
