@@ -15,4 +15,5 @@ class ResponseCodes
     const AUTH_ERROR = 'authentication_error';
     const AUTH_ACCESS_TOKEN_REQUIRED = 'access_token_required';
     const INVALID_PARAMETERS = 'invalid_parameters';
+    const RECORD_NOT_FOUND = 'record_not_found';
 }
