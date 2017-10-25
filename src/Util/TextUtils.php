@@ -43,7 +43,16 @@ class TextUtils
         }
 
         return '+' . $countryCode . $actualNumber;
+    }
 
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param $number
+     * @return string
+     */
+    public static function convertToNigerianPhoneFormat($number)
+    {
+        return self::formatPhoneNumberToInternationalFormat('234', $number, 10);
     }
 
     /**
@@ -58,5 +67,27 @@ class TextUtils
             $hex .= dechex(ord($string[$i]));
         }
         return $hex;
+    }
+
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param $mixed
+     * @return array|string
+     * @credits http://stackoverflow.com/questions/10199017/how-to-solve-json-error-utf8-error-in-php-json-decode
+     */
+    public static function utf8ize($mixed)
+    {
+        if (is_array($mixed)) {
+            foreach ($mixed as $key => $value) {
+                $mixed[$key] = self::utf8ize($value);
+            }
+        } elseif (is_object($mixed)) {
+            foreach ($mixed as $key => $value) {
+                $mixed->$key = self::utf8ize($value);
+            }
+        } elseif (is_string($mixed)) {
+            return utf8_encode($mixed);
+        }
+        return $mixed;
     }
 }
