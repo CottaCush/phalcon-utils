@@ -11,6 +11,9 @@ use Handlebars\Handlebars;
  */
 class TextUtils
 {
+    const NIGERIA_COUNTRY_CODE = '234';
+    const NIGERIA_PHONE_NUMBER_LENGTH = 10;
+
     /**
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      * @param $message
@@ -52,7 +55,11 @@ class TextUtils
      */
     public static function convertToNigerianPhoneFormat($number)
     {
-        return self::formatPhoneNumberToInternationalFormat('234', $number, 10);
+        return self::formatPhoneNumberToInternationalFormat(
+            self::NIGERIA_COUNTRY_CODE,
+            $number,
+            self::NIGERIA_PHONE_NUMBER_LENGTH
+        );
     }
 
     /**
