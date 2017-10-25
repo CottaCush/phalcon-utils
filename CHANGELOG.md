@@ -116,3 +116,6 @@
 
 # [2.4.4](https://github.com/CottaCush/phalcon-utils/releases/tag/2.4.4) (2017-10-11)
 - Fix issue with undefined not found response code constant
+
+# [2.4.5](https://github.com/CottaCush/phalcon-utils/releases/tag/2.4.5) (2017-10-25)
+- Encode responses to UTF8
