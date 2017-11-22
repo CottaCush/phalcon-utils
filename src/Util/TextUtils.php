@@ -11,6 +11,9 @@ use Handlebars\Handlebars;
  */
 class TextUtils
 {
+    const NIGERIA_COUNTRY_CODE = '234';
+    const NIGERIA_PHONE_NUMBER_LENGTH = 10;
+
     /**
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      * @param $message
@@ -43,7 +46,20 @@ class TextUtils
         }
 
         return '+' . $countryCode . $actualNumber;
+    }
 
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param $number
+     * @return string
+     */
+    public static function convertToNigerianPhoneFormat($number)
+    {
+        return self::formatPhoneNumberToInternationalFormat(
+            self::NIGERIA_COUNTRY_CODE,
+            $number,
+            self::NIGERIA_PHONE_NUMBER_LENGTH
+        );
     }
 
     /**
@@ -58,6 +74,28 @@ class TextUtils
             $hex .= dechex(ord($string[$i]));
         }
         return $hex;
+    }
+
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param $mixed
+     * @return array|string
+     * @credits http://stackoverflow.com/questions/10199017/how-to-solve-json-error-utf8-error-in-php-json-decode
+     */
+    public static function utf8ize($mixed)
+    {
+        if (is_array($mixed)) {
+            foreach ($mixed as $key => $value) {
+                $mixed[$key] = self::utf8ize($value);
+            }
+        } elseif (is_object($mixed)) {
+            foreach ($mixed as $key => $value) {
+                $mixed->$key = self::utf8ize($value);
+            }
+        } elseif (is_string($mixed)) {
+            return utf8_encode($mixed);
+        }
+        return $mixed;
     }
 
     /**

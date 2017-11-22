@@ -5,6 +5,7 @@ namespace PhalconUtils\Http;
 use Phalcon\Http\Response as PhalconResponse;
 use PhalconUtils\Constants\HttpStatusCodes;
 use PhalconUtils\Constants\ResponseMessages;
+use PhalconUtils\Util\TextUtils;
 
 /**
  * Class Response
@@ -44,7 +45,7 @@ class Response extends PhalconResponse implements JSend
         $this->setStatusCode(200, HttpStatusCodes::getMessage(200))->sendHeaders();
         $this->setJsonContent(array(
             'status' => self::RESPONSE_TYPE_SUCCESS,
-            'data' => $data
+            'data' => TextUtils::utf8ize($data)
         ));
         $this->sendResponse();
     }
@@ -60,7 +61,7 @@ class Response extends PhalconResponse implements JSend
         $this->setStatusCode($http_status_code, HttpStatusCodes::getMessage($http_status_code))->sendHeaders();
         $this->setJsonContent(array(
             'status' => self::RESPONSE_TYPE_FAIL,
-            'data' => $data
+            'data' => TextUtils::utf8ize($data)
         ));
         $this->sendResponse();
     }
