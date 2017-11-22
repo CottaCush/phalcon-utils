@@ -119,3 +119,6 @@
 
 # [2.4.5](https://github.com/CottaCush/phalcon-utils/releases/tag/2.4.5) (2017-10-25)
 - Encode responses to UTF8
+
+# [2.5.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.5.0) (2017-11-22)
+- Add method to get ini value as bytes
