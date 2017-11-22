@@ -59,4 +59,32 @@ class TextUtils
         }
         return $hex;
     }
+
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param $key
+     * @return bool|int|string
+     * @credits https://stackoverflow.com/a/6846537/1215010
+     */
+    public static function getIniVariableAsBytes($key)
+    {
+        $val = trim($key);
+
+        $last = strtolower($val[strlen($val) - 1]);
+        $val = substr($val, 0, -1); // necessary since PHP 7.1; otherwise optional
+
+        switch ($last) {
+            case 'g':
+                $val *= 1024;
+            //keep multiplying
+            case 'm':
+                $val *= 1024;
+            //keep multiplying
+            case 'k':
+                $val *= 1024;
+                break;
+        }
+
+        return $val;
+    }
 }
