@@ -54,4 +54,21 @@ class TextUtilsTest extends \UnitTestCase
 
         $this->assertEquals('+2348111111111', $internationalNumber);
     }
+
+
+    public function testFormattingToNigerianNaira()
+    {
+        $template = '{{formatToNaira money}}';
+        $data = ['money' => 500];
+        $this->assertEquals('500.00NGN', TextUtils::getActualMessage($template, $data));
+    }
+
+    public function testAddCountableSuffix()
+    {
+        $template = '{{appendCountableSuffix number child children}}';
+        $data = ['number' => 500];
+        $this->assertEquals('500 children', TextUtils::getActualMessage($template, $data));
+        $data = ['number' => 1];
+        $this->assertEquals('1 child', TextUtils::getActualMessage($template, $data));
+    }
 }
