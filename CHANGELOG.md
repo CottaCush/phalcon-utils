@@ -122,3 +122,8 @@
 
 # [2.5.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.5.0) (2017-11-22)
 - Add method to get ini value as bytes
+
+# [2.6.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.6.0) (2017-11-28)
+- Add more utility methods for dates and texts
+- Allow extension of templating by introducing templating engine service
+- Add custom helpers for Handlebars
