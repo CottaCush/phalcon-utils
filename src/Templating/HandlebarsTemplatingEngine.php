@@ -3,6 +3,7 @@
 namespace PhalconUtils\Templating;
 
 use Handlebars\Handlebars;
+use PhalconUtils\Templating\Helpers\HandleBarsHelpers;
 
 /**
  * Class HandlebarsTemplatingEngine
