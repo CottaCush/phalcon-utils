@@ -2,7 +2,11 @@
 
 namespace PhalconUtils\Util;
 
-use Handlebars\Handlebars;
+use InvalidArgumentException;
+use Phalcon\Di;
+use PhalconUtils\Constants\Services;
+use PhalconUtils\Templating\HandlebarsTemplatingEngine;
+use PhalconUtils\Templating\TemplatingEngineInterface;
 
 /**
  * Class TextUtils
@@ -22,8 +26,19 @@ class TextUtils
      */
     public static function getActualMessage($message, array $params)
     {
-        $engine = new Handlebars();
-        return $engine->render($message, $params);
+        $appHasTemplatingEngine = Di::getDefault()->has(Services::TEMPLATING_ENGINE);
+        if (!$appHasTemplatingEngine) {
+            $engine = new HandlebarsTemplatingEngine();
+        } else {
+            /** @var TemplatingEngineInterface $engine */
+            $engine = Di::getDefault()->has(Services::TEMPLATING_ENGINE);
+            if (!($engine instanceof TemplatingEngineInterface)) {
+                throw new InvalidArgumentException('Templating Engine must be an instance of ' .
+                    TemplatingEngineInterface::class);
+            }
+        }
+
+        return $engine->renderTemplate($message, $params);
     }
 
     /**
@@ -124,5 +139,36 @@ class TextUtils
         }
 
         return $val;
+    }
+
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param $amount
+     * @return string
+     */
+    public static function formatToNaira($amount)
+    {
+        if (is_null($amount) || !is_numeric($amount)) {
+            return $amount;
+        }
+
+        return number_format($amount, 2) . 'NGN';
+    }
+
+    /**
+     * @author Adeyemi Olaoye <yemi@cottacush.com>
+     * @param $text
+     * @param $suffix
+     * @param $pluralForm
+     * @return string
+     */
+    public static function appendCountableSuffix($text, $suffix, $pluralForm)
+    {
+        if (is_null($text) || !is_numeric($text)) {
+            return $text;
+        }
+
+        $textWithLabel = ($text > 1) ? $text . ' ' . $pluralForm : $text . ' ' . $suffix;
+        return $textWithLabel;
     }
 }

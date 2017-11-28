@@ -16,4 +16,5 @@ class Services extends PhalconRestServices
     const LOGGER = 'logger';
     const CONSOLE = 'console';
     const FRACTAL_MANAGER = 'fractal';
+    const TEMPLATING_ENGINE = 'templatingEngine';
 }
