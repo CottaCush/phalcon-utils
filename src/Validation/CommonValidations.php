@@ -311,14 +311,18 @@ trait CommonValidations
      * @param $field
      * @param $model
      * @param string $column
+     * @param bool $cancelOnFail
      */
-    public function validateDataField($field, $model, $column = 'key')
+    public function validateDataField($field, $model, $column = 'key', $cancelOnFail = false)
     {
         $this->add($field, new Model([
             'model' => $model,
             'conditions' => $column . ' = :key:',
             'bind' => ['key' => $this->getValue($field)],
-            'message' => sprintf(ValidationMessages::INVALID_PARAMETER_SUPPLIED, $field)
+            'message' => sprintf(ValidationMessages::INVALID_PARAMETER_SUPPLIED, $field),
+            'cancelOnFail' => $cancelOnFail,
+            'compare_column' => $column,
+            'compare_with_sensitivity' => true
         ]));
     }
 }
