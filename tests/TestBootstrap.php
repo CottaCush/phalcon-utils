@@ -13,7 +13,6 @@ $env = getenv('APPLICATION_ENVIRONMENT');
 
 // Required for phalcon/incubator
 include __DIR__ . "/../vendor/autoload.php";
-include_once __DIR__ . '/stubs/CommonValidationsImpl.php';
 
 /**
  * Read the configuration

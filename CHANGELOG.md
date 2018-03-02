@@ -128,3 +128,8 @@
 - Add more utility methods for dates and texts
 - Allow extension of templating by introducing templating engine service
 - Add custom helpers for Handlebars
+
+# [2.7.0](https://github.com/CottaCush/phalcon-utils/releases/tag/2.7.0) (2018-03-02)
+- Add optional case sensitive check support for ModelValidator
+- Implement case sensitive check in `CommonValidations::validateDataField`
+- Update tests loader

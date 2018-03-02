@@ -2,11 +2,7 @@
 
 namespace PhalconUtils\Validation\Validators;
 
-
-use Phalcon\Mvc\Model as PhalconModel;
 use Phalcon\Validation;
-use Phalcon\Validation\Message;
-use Phalcon\Validation\Validator;
 use Phalcon\Validation\ValidatorInterface;
 
 /**
@@ -27,13 +23,15 @@ class Model extends BaseValidator implements ValidatorInterface
     public function validate(Validation $validation, $attribute)
     {
         $value = $validation->getValue($attribute);
-        $model_name = $this->getOption('model', null);
+        $modelName = $this->getOption('model', null);
         $conditions = $this->getOption('conditions', null);
         $bind = $this->getOption('bind', []);
-        $show_messages = $this->getOption('show_messages', true);
+        $showMessages = $this->getOption('show_messages', true);
+        $compareColumn = $this->getOption('compare_column', null);
+        $compareWithSensitivity = $this->getOption('compare_with_sensitivity', true);
 
         /** @var \Phalcon\Mvc\Model $model */
-        $model = $this->getModel($model_name);
+        $model = $this->getModel($modelName);
 
         if (is_null($conditions)) {
             if (is_null($value)) {
@@ -44,11 +42,20 @@ class Model extends BaseValidator implements ValidatorInterface
             $data = $model::findFirst(['conditions' => $conditions, 'bind' => $bind]);
         }
         if (!$data) {
-            if ($show_messages) {
+            if ($showMessages) {
                 $this->addMessageToValidation($validation, 'Invalid :field supplied', $attribute, 'Model');
             }
             return false;
         }
+
+        if ($compareColumn) {
+            $value = ($compareWithSensitivity) ? $value : strtolower($value);
+            $modelValue = ($compareWithSensitivity) ? $data->{$compareColumn} : strtolower($data->{$compareColumn});
+            if ($modelValue != $value) {
+                return false;
+            }
+        }
+
         return true;
     }
 }
