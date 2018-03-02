@@ -2,7 +2,6 @@
 
 namespace PhalconUtils\Validation\Validators;
 
-
 use Phalcon\Validation;
 use Phalcon\Validation\ValidatorInterface;
 
@@ -49,10 +48,12 @@ class Model extends BaseValidator implements ValidatorInterface
             return false;
         }
 
-        $value = ($compareWithSensitivity) ? $value : strtolower($value);
-        $modelValue = ($compareWithSensitivity) ? $model->{$compareColumn} : strtolower($model->{$compareColumn});
-        if ($compareColumn && $modelValue != $value) {
-            return false;
+        if ($compareColumn) {
+            $value = ($compareWithSensitivity) ? $value : strtolower($value);
+            $modelValue = ($compareWithSensitivity) ? $data->{$compareColumn} : strtolower($data->{$compareColumn});
+            if ($modelValue != $value) {
+                return false;
+            }
         }
 
         return true;
