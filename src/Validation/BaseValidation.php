@@ -117,8 +117,8 @@ abstract class BaseValidation extends Validation
     public function getData()
     {
         if (!is_null($this->namespace) && !is_null($this->data)) {
-            if (is_array($this->data) && isset($data[$this->namespace])) {
-                return $data[$this->namespace];
+            if (is_array($this->data) && isset($this->data[$this->namespace])) {
+                return $this->data[$this->namespace];
             } elseif (is_object($this->data) && property_exists($this->data, $this->namespace)) {
                 return $this->data->{$this->namespace};
             }
