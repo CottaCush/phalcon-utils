@@ -2,7 +2,6 @@
 
 namespace PhalconUtils\Model;
 
-use App\Library\PaginationAdapter;
 use League\Fractal\Pagination\PagerfantaPaginatorAdapter;
 use League\Fractal\Resource\Collection;
 use League\Fractal\TransformerAbstract;
@@ -17,6 +16,7 @@ use Phalcon\Mvc\Model\Manager as ModelsManager;
 use Phalcon\Mvc\Model\RelationInterface;
 use Phalcon\Paginator\Adapter\QueryBuilder as PaginatorQueryBuilder;
 use PhalconUtils\Constants\Services;
+use PhalconUtils\Pagination\PaginationAdapter;
 use PhalconUtils\Util\DateUtils;
 
 /**
@@ -221,20 +221,25 @@ class BaseModel extends Model
      * @param null $relatedRecordsToLoad
      * @param TransformerAbstract $transformer
      * @param null $shouldPaginate
+     * @param null $resourceKey
+     * @param null $meta
      * @return array
      */
     public static function getPaginatedData(
         $builder,
         $relatedRecordsToLoad = null,
         TransformerAbstract $transformer = null,
-        $shouldPaginate = null
-    ) {
-        $page = self::getPage();
-        $limit = self::getLimit();
+        $shouldPaginate = null,
+        $resourceKey = null
+    )
+    {
         $shouldPaginate = is_null($shouldPaginate) ? self::shouldPaginate() : $shouldPaginate;
         $paginator = null;
 
         if ($shouldPaginate) {
+            $page = self::getPage();
+            $limit = self::getLimit();
+
             $paginatorBuilder = new PaginatorQueryBuilder([
                 'builder' => $builder,
                 'page' => $page,
@@ -245,13 +250,11 @@ class BaseModel extends Model
             $pagerFanta->setMaxPerPage($limit);
             $pagerFanta->setCurrentPage($paginateObject->current);
             $paginator = new PagerfantaPaginatorAdapter($pagerFanta, function () {
-
             });
             $items = $paginateObject->items;
         } else {
             $items = $builder->getQuery()->execute();
         }
-
 
         $collection = self::getCollection(
             $items,
@@ -261,7 +264,9 @@ class BaseModel extends Model
 
         if ($shouldPaginate) {
             $collection->setPaginator($paginator);
-            $collection->setResourceKey('items');
+            if (is_null($resourceKey)) {
+                $collection->setResourceKey('items');
+            }
         }
 
         return Di::getDefault()->get(Services::FRACTAL_MANAGER)->createData($collection)->toArray();
@@ -323,5 +328,17 @@ class BaseModel extends Model
     public static function shouldPaginate()
     {
         return (boolean)Di::getDefault()->get('request')->get('paginate', null, false);
+    }
+
+    /**
+     * @author Olawale Lawal <wale@cottacush.com>
+     * @return Model\Query\BuilderInterface
+     */
+    public static function getQueryBuilder()
+    {
+        $calledClass = get_called_class();
+        /** @var Model $model */
+        $model = new $calledClass();
+        return $model->getModelsManager()->createBuilder();
     }
 }

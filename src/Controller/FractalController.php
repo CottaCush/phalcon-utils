@@ -2,16 +2,13 @@
 
 namespace PhalconUtils\Controller;
 
-use App\Library\PaginationAdapter;
 use League\Fractal\Manager;
-use League\Fractal\Pagination\PagerfantaPaginatorAdapter;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
-use Pagerfanta\Pagerfanta;
 use Phalcon\Mvc\Model\EagerLoading\Loader;
 use Phalcon\Mvc\Model\EagerLoadingTrait;
 use Phalcon\Mvc\Model\Resultset;
-use Phalcon\Paginator\Adapter\QueryBuilder;
+use PhalconUtils\Model\BaseModel;
 use PhalconUtils\Transformers\Transformable;
 
 /**
@@ -103,37 +100,7 @@ abstract class FractalController extends BaseController
      */
     protected function createPaginatedResponse($builder, $transformer, $modelsToLoad, $resourceKey = null, $meta = null)
     {
-        $page = $this->request->get('page', null, 1);
-        $limit = $this->request->get('limit', null, 20);
-
-        $paginatorBuilder = new QueryBuilder(['builder' => $builder, 'page' => $page, 'limit' => $limit]);
-
-        if ($modelsToLoad instanceof Transformable) {
-            $modelsToLoad = $modelsToLoad->getModelsToLoad();
-        }
-
-        $paginateObject = $paginatorBuilder->getPaginate();
-        $pagerFanta = new Pagerfanta(new PaginationAdapter($paginatorBuilder, $paginateObject));
-        $pagerFanta->setMaxPerPage($limit);
-        $pagerFanta->setCurrentPage($paginateObject->current);
-        $paginator = new PagerfantaPaginatorAdapter($pagerFanta, function () {
-        });
-
-        if ($modelsToLoad) {
-            $resultSet = Loader::fromResultset($paginateObject->items, $modelsToLoad);
-        } else {
-            $resultSet = $paginateObject->items;
-        }
-
-        if (is_null($resultSet)) {
-            return $this->createResponse($meta ? $meta : []);
-        }
-        $collection = new Collection($resultSet, $transformer, $resourceKey);
-        $collection->setPaginator($paginator);
-        if (is_null($resourceKey)) {
-            $collection->setResourceKey('items');
-        }
-        $data = $this->fractal->createData($collection)->toArray();
+        $data = BaseModel::getPaginatedData($builder, $modelsToLoad, $transformer, null, $resourceKey);
         $response = array_merge($data, $meta ? $meta : []);
         return $this->createResponse($response);
     }
