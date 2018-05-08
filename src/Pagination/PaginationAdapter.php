@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Library;
+namespace PhalconUtils\Pagination;
 
 use Pagerfanta\Adapter\AdapterInterface;
 use Phalcon\Paginator\Adapter\QueryBuilder;
