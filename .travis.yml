@@ -30,7 +30,7 @@ matrix:
 before_script:
   - curl -s "https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh" | sudo bash
   - sudo apt-get install php5-phalcon
-  - sudo apt-get install php7.0-phalcon
+#  - sudo apt-get install php7.0-phalcon
   - travis_retry composer self-update
   - travis_retry composer config --global github-oauth.github.com "$GITHUB_TOKEN"
   - travis_retry composer global require "fxp/composer-asset-plugin:~1.4"
