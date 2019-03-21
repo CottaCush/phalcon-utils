@@ -15,6 +15,7 @@ cache:
   directories:
     - vendor
     - $HOME/.composer/cache
+    - ~/cphalcon
 
 matrix:
   include:
@@ -27,15 +28,16 @@ matrix:
     - php: 7.2
       env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
 
+before_install:
+  - composer install --prefer-source --no-interaction
+  - vendor/bin/install-phalcon.sh 3.3.2
+
 before_script:
-  - curl -s "https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh" | sudo bash
-  - sudo apt-get install php5-phalcon
-  - php -v
-#  - sudo apt-get install php7.0-phalcon
   - travis_retry composer self-update
   - travis_retry composer config --global github-oauth.github.com "$GITHUB_TOKEN"
-  - travis_retry composer global require "fxp/composer-asset-plugin:~1.4"
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - travis_retry composer install --prefer-source --no-interaction
+  - travis_retry vendor/bin/install-phalcon.sh 3.3.2
   - travis_retry composer install --no-interaction
   - travis_retry composer require php-coveralls/php-coveralls:~2.0
 
