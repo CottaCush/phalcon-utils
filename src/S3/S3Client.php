@@ -27,8 +27,14 @@ class S3Client
      * @param null $bucket
      * @param null $namespace
      */
-    public function __construct($awsKey, $awsSecret, $region, $bucket = null, $namespace = null, $version = '2006-03-01')
-    {
+    public function __construct(
+        $awsKey,
+        $awsSecret,
+        $region,
+        $bucket = null,
+        $namespace = null,
+        $version = '2006-03-01'
+    ) {
         $this->awsKey = $awsKey;
         $this->awsSecret = $awsSecret;
         $this->bucket = $bucket;
@@ -93,13 +99,13 @@ class S3Client
         if (is_null($bucket) && is_null($this->bucket)) {
             $this->addMessage('Invalid bucket');
             return false;
-        } else if (!is_null($this->bucket)) {
+        } elseif (!is_null($this->bucket)) {
             $bucket = $this->bucket;
         }
 
         if (is_null($namespace) && is_null($this->namespace)) {
             $namespace = '';
-        } else if (!is_null($this->namespace)) {
+        } elseif (!is_null($this->namespace)) {
             $namespace = $this->namespace;
         }
 
@@ -139,5 +145,4 @@ class S3Client
     {
         $this->error_messages[] = $message;
     }
-
 }

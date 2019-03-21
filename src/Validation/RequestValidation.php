@@ -15,7 +15,7 @@ class RequestValidation extends BaseValidation
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      * @return mixed
      */
-    function initialize()
+    public function initialize()
     {
         // TODO: Implement initialize() method.
     }

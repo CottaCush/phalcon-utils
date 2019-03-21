@@ -231,8 +231,7 @@ class BaseModel extends Model
         TransformerAbstract $transformer = null,
         $shouldPaginate = null,
         $resourceKey = null
-    )
-    {
+    ) {
         $shouldPaginate = is_null($shouldPaginate) ? self::shouldPaginate() : $shouldPaginate;
         $paginator = null;
 

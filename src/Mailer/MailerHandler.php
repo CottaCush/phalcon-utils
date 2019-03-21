@@ -49,8 +49,16 @@ class MailerHandler
      * @return bool
      * @author Adeyemi Olaoye <yemi@cottacush.com>
      */
-    public function send($text = "", $html = "", $subject = "", $to = [], $from = null, $cc = [], $bcc = [], $params = [])
-    {
+    public function send(
+        $text = "",
+        $html = "",
+        $subject = "",
+        $to = [],
+        $from = null,
+        $cc = [],
+        $bcc = [],
+        $params = []
+    ) {
         $this->failures = [];
 
         if (is_null($from)) {
@@ -84,5 +92,4 @@ class MailerHandler
         }
         return $message;
     }
-
 }
