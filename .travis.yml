@@ -33,7 +33,7 @@ before_script:
   - travis_retry composer config --global github-oauth.github.com "$GITHUB_TOKEN"
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - travis_retry composer install --ignore-platform-reqs
-  - travis_retry vendor/bin/install-phalcon.sh 3.3.2
+  - travis_retry vendor/bin/install-phalcon.sh $PHALCON_VERSION
   - travis_retry composer install --no-interaction
   - travis_retry composer require php-coveralls/php-coveralls:~2.0
 
