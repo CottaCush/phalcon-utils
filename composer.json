@@ -47,7 +47,9 @@
     "bshaffer/oauth2-server-php": "^1.8",
     "league/fractal": "^0.13.0",
     "xamin/handlebars.php": "^0.10.4",
-    "techpivot/phalcon-ci-installer": "~1.0"
+    "techpivot/phalcon-ci-installer": "~1.0",
+    "scrutinizer/ocular": "~1.1",
+    "squizlabs/php_codesniffer": "~2.3"
   },
   "suggest": {
     "redound/phalcon-rest": "Install Phalcon Rest for REST app bootstrap support",
