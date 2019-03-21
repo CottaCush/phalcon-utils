@@ -28,10 +28,6 @@ matrix:
     - php: 7.2
       env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
 
-before_install:
-  - composer install --prefer-source --no-interaction
-  - vendor/bin/install-phalcon.sh 3.3.2
-
 before_script:
   - travis_retry composer self-update
   - travis_retry composer config --global github-oauth.github.com "$GITHUB_TOKEN"
