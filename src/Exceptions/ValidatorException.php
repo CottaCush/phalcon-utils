@@ -2,7 +2,6 @@
 
 namespace PhalconUtils\Exceptions;
 
-
 use Phalcon\Exception;
 
 /**

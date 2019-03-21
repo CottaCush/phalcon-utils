@@ -120,5 +120,4 @@ class HttpStatusCodes
     {
         return constant('self::HTTP_' . $code);
     }
-
 }

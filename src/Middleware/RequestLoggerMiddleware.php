@@ -27,7 +27,6 @@ class RequestLoggerMiddleware extends BaseMiddleware
         }
 
         $this->logger = new Logger($logTargets);
-
     }
 
     public function beforeExecuteRoute()
