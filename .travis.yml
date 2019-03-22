@@ -13,7 +13,7 @@ sudo: false
 cache:
   directories:
     - vendor
-    - $HOME/.composer/cache
+#    - $HOME/.composer/cache
     - $HOME/cphalcon
 
 matrix:
@@ -31,7 +31,7 @@ before_script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - travis_retry composer install --no-interaction --ignore-platform-reqs
   - travis_retry vendor/bin/install-phalcon.sh $PHALCON_VERSION
-  - travis_retry composer require php-coveralls/php-coveralls:~2.0
+  - travis_retry composer require --dev php-coveralls/php-coveralls:~2.0
 
 script:
   - vendor/bin/phpcs --standard=psr2 src/
