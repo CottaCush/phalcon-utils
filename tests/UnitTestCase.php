@@ -15,7 +15,7 @@ abstract class UnitTestCase extends PhalconTestCase
      */
     private $_loaded = false;
 
-    public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL)
+    public function setUp(Phalcon\DiInterface $di = null, Phalcon\Config $config = null)
     {
         // Load any additional services that might be required during testing
         $di = DI::getDefault();
@@ -46,5 +46,4 @@ abstract class UnitTestCase extends PhalconTestCase
     public function tearDown()
     {
     }
-
 }

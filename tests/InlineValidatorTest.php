@@ -29,7 +29,6 @@ class InlineValidatorTest extends UnitTestCase
         } catch (Exception $ex) {
             $this->assertInstanceOf(ValidatorException::class, $ex);
         }
-
     }
 
     /**

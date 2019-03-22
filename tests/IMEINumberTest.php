@@ -49,5 +49,4 @@ class IMEINumberTest extends \UnitTestCase
         $validation_status = $validation->validate(['imei' => '353918058092269']);
         $this->assertTrue($validation_status);
     }
-    
 }

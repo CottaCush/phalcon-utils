@@ -45,4 +45,3 @@ $di->setShared('security', function () {
  * Add config
  */
 $di->set('config', $config);
-
