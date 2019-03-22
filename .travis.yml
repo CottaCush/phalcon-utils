@@ -17,13 +17,13 @@ cache:
     - $HOME/cphalcon
 
 matrix:
-  include:
-    - php: 7.0
-      env: 'COMPOSER_FLAGS="COMPOSER_CACHE_DIR=/tmp/foo"'
-    - php: 7.1
-      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
-    - php: 7.2
-      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
+#  include:
+#    - php: 7.0
+#      env: 'COMPOSER_FLAGS="COMPOSER_CACHE_DIR=/tmp/foo"'
+#    - php: 7.1
+#      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
+#    - php: 7.2
+#      env: 'COMPOSER_FLAGS="--prefer-stable --prefer-lowest"'
 
 before_script:
   - travis_retry composer self-update
@@ -31,7 +31,7 @@ before_script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - travis_retry composer install --no-interaction --ignore-platform-reqs
   - travis_retry vendor/bin/install-phalcon.sh $PHALCON_VERSION
-  - travis_retry composer require --dev php-coveralls/php-coveralls:^2.0 $COMPOSER_FLAGS
+  - travis_retry composer require --dev php-coveralls/php-coveralls:^2.0 COMPOSER_CACHE_DIR=/tmp/foo
 
 script:
   - vendor/bin/phpcs --standard=psr2 src/
