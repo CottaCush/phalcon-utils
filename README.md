@@ -70,3 +70,5 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-downloads]: https://packagist.org/packages/cottacush/phalcon-utils
 [link-author]: https://github.com/yemexx1
 [link-contributors]: ../../contributors
+
+[![Coverage Status](https://coveralls.io/repos/github/CottaCush/phalcon-utils/badge.svg?branch=features/setup-travis-build)](https://coveralls.io/github/CottaCush/phalcon-utils?branch=master)
