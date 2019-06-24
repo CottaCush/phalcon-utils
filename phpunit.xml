@@ -16,19 +16,19 @@
     </testsuites>
     <filter>
         <whitelist>
-            <directory suffix=".php">src/</directory>
+            <directory suffix=".php">src/Templating</directory>
         </whitelist>
-        <exclude>
-            <directory suffix=".php">src/Bootstrap</directory>
-            <directory suffix=".php">src/Constants</directory>
-            <directory suffix=".php">src/Controller</directory>
-            <directory suffix=".php">src/Exceptions</directory>
-            <directory suffix=".php">src/Mailer</directory>
-            <directory suffix=".php">src/Model</directory>
-            <directory suffix=".php">src/Pagination</directory>
-            <directory suffix=".php">src/S3</directory>
-            <directory suffix=".php">src/Transformers</directory>
-        </exclude>
+        <!--<exclude>-->
+            <!--<directory suffix=".php">src/Bootstrap</directory>-->
+            <!--<directory suffix=".php">src/Constants</directory>-->
+            <!--<directory suffix=".php">src/Controller</directory>-->
+            <!--<directory suffix=".php">src/Exceptions</directory>-->
+            <!--<directory suffix=".php">src/Mailer</directory>-->
+            <!--<directory suffix=".php">src/Model</directory>-->
+            <!--<directory suffix=".php">src/Pagination</directory>-->
+            <!--<directory suffix=".php">src/S3</directory>-->
+            <!--<directory suffix=".php">src/Transformers</directory>-->
+        <!--</exclude>-->
     </filter>
     <logging>
         <log type="tap" target="build/report.tap"/>

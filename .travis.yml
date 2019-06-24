@@ -39,5 +39,5 @@ script:
   - vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
 
 after_success:
-  - sh -c 'php vendor/bin/php-coveralls --exclude-no-stmt -v'
+  - sh -c 'php vendor/bin/php-coveralls -v'
 #  - sh -c 'php vendor/bin/coveralls -v'
