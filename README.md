@@ -57,7 +57,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-version]: https://img.shields.io/packagist/v/cottacush/phalcon-utils.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-travis]: https://img.shields.io/travis/cottacush/phalcon-utils/master.svg?style=flat-square
-[ico-coveralls]: https://coveralls.io/repos/github/CottaCush/phalcon-utils/badge.svg?branch=master
+[ico-coveralls]: https://coveralls.io/repos/github/CottaCush/phalcon-utils/badge.svg?branch=features/setup-travis-build
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/cottacush/phalcon-utils.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/cottacush/phalcon-utils.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/cottacush/phalcon-utils.svg?style=flat-square
@@ -70,5 +70,3 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-downloads]: https://packagist.org/packages/cottacush/phalcon-utils
 [link-author]: https://github.com/yemexx1
 [link-contributors]: ../../contributors
-
-[![Coverage Status](https://coveralls.io/repos/github/CottaCush/phalcon-utils/badge.svg?branch=features/setup-travis-build)](https://coveralls.io/github/CottaCush/phalcon-utils?branch=master)
