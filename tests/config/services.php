@@ -2,7 +2,10 @@
 
 use Phalcon\Di\FactoryDefault;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
+use Phalcon\Logger\Adapter\File;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
+use PhalconUtils\Constants\Services;
+use PhalconUtils\Util\Logger;
 
 $di = new FactoryDefault();
 
@@ -39,6 +42,16 @@ $di->setShared('security', function () {
     $security = new \Phalcon\Security();
     $security->setWorkFactor(12);
     return $security;
+});
+
+$di->set(Services::LOGGER, function () use ($config) {
+    //$fileTarget = new File($config->application->logsDir . 'general.log');
+    $fileTarget = new File('general.log');
+
+    $targets = [$fileTarget];
+
+    $logger = new Logger($targets, ['debug' => $config->debug]);
+    return $logger;
 });
 
 /**

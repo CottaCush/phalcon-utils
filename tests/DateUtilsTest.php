@@ -1,6 +1,6 @@
 <?php
 
-namespace CottaCush\Yii2\Tests\Date;
+namespace PhalconUtils\tests;
 
 use PhalconUtils\Util\DateUtils;
 
