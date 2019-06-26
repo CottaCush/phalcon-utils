@@ -42,14 +42,14 @@ class HttpClientTest extends \UnitTestCase
         $this->assertInstanceOf(Curl::class, $this->httpClient->getProvider());
     }
 
-    public function testGet()
+    public function testGetRequest()
     {
         $response = $this->httpClient->get(self::BASE_URL);
 
         $this->assertTrue(HttpClient::isSuccessful($response));
     }
 
-    public function testPost()
+    public function testPostRequest()
     {
         $url = self::BASE_URL . "/posts";
         $response = $this->httpClient->post($url, json_encode($this->testPostParams));
@@ -62,4 +62,37 @@ class HttpClientTest extends \UnitTestCase
         $this->testPostId = $postId;
     }
 
+    public function testPutRequest()
+    {
+        $url = self::BASE_URL . "/posts/$this->testPostId";
+        $data = $this->testPostParams;
+        $title = 'foo';
+        $data['title'] = $title;
+        $this->httpClient->setHeader('Content-Type', 'application/json');
+
+        $response = $this->httpClient->post($url, json_encode($data));
+        $this->assertTrue(HttpClient::isSuccessful($response, HttpStatusCodes::RESOURCE_CREATED_CODE));
+
+        $response = $this->gateway->decodeJsonResponse($response, false, true, HttpStatusCodes::RESOURCE_CREATED_CODE);
+        $this->assertEquals($title, ArrayUtils::getValue($response, 'title'));
+    }
+
+    public function testSetHeaders()
+    {
+        $contentType = 'application/json';
+
+        $this->httpClient->setHeader('Content-Type', $contentType);
+
+        $this->assertEquals($this->httpClient->getProvider()->header->get('Content-Type'), $contentType);
+    }
+
+    /**
+     * @author Kehinde Ladipo <kehinde.ladipo@cottacush.com>
+     * @depends testPutRequest
+     */
+    public function testDeleteRequest()
+    {
+        $response = $this->httpClient->delete(self::BASE_URL . "/posts/1");
+        $this->assertTrue(HttpClient::isSuccessful($response));
+    }
 }
