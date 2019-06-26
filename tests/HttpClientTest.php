@@ -92,7 +92,12 @@ class HttpClientTest extends \UnitTestCase
      */
     public function testDeleteRequest()
     {
-        $response = $this->httpClient->delete(self::BASE_URL . "/posts/1");
+        $url = self::BASE_URL . "/posts/1";
+
+        $this->gateway->logger->debugHttpServiceRequest($this->gateway, [], $url);
+        $response = $this->httpClient->delete($url);
+        $this->gateway->logger->debugHttpServiceResponse($this->gateway, $response);
+
         $this->assertTrue(HttpClient::isSuccessful($response));
     }
 }
