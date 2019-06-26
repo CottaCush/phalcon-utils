@@ -1,6 +1,6 @@
 <?php
 
-namespace PhalconUtils\tests;
+namespace PhalconUtils\tests\Http;
 
 use Phalcon\Config;
 use Phalcon\DiInterface;

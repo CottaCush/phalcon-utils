@@ -1,6 +1,6 @@
 <?php
 
-namespace PhalconUtils\tests;
+namespace PhalconUtils\tests\Utils;
 
 use PhalconUtils\Util\DateUtils;
 

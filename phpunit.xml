@@ -16,7 +16,6 @@
     </testsuites>
     <filter>
         <whitelist>
-            <!--<directory suffix=".php">src/</directory>-->
             <directory suffix=".php">src/Templating/</directory>
             <directory suffix=".php">src/Util/</directory>
             <directory suffix=".php">src/Validation/</directory>

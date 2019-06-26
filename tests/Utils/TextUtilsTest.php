@@ -1,6 +1,6 @@
 <?php
 
-namespace PhalconUtils\tests;
+namespace PhalconUtils\tests\Utils;
 
 use PhalconUtils\Util\TextUtils;
 
@@ -70,5 +70,21 @@ class TextUtilsTest extends \UnitTestCase
         $this->assertEquals('500 children', TextUtils::getActualMessage($template, $data));
         $data = ['number' => 1];
         $this->assertEquals('1 child', TextUtils::getActualMessage($template, $data));
+    }
+
+    /**
+     * @author Kehinde Ladipo <kehinde.ladipo@cottacush.com>
+     */
+    public function testConvertToNigerianPhoneFormat()
+    {
+        $number = TextUtils::convertToNigerianPhoneFormat(
+            '08111111111'
+        );
+        $this->assertEquals('+2348111111111', $number);
+
+        $number = TextUtils::convertToNigerianPhoneFormat(
+            $number
+        );
+        $this->assertEquals('+2348111111111', $number);
     }
 }

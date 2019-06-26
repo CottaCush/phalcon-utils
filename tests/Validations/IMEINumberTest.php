@@ -2,8 +2,6 @@
 
 namespace Tests;
 
-use Phalcon\DI;
-use Phalcon\Validation;
 use PhalconUtils\Validation\RequestValidation;
 use PhalconUtils\Validation\Validators\IMEINumber;
 
