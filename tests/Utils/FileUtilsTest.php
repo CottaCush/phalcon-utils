@@ -14,6 +14,7 @@ use PhalconUtils\Util\FileUtils;
 class FileUtilsTest extends \UnitTestCase
 {
     const FILE_NAME = 'test.csv';
+    const IMAGE_NAME = 'test.jpg';
 
     private $data;
 
@@ -30,6 +31,9 @@ class FileUtilsTest extends \UnitTestCase
         foreach ($this->data as $element) {
             fwrite($handle, implode(",", $element)."\n");
         }
+
+        $image = imagecreate(500, 500);
+        imagejpeg($image, self::IMAGE_NAME);
     }
 
     /**
@@ -43,9 +47,20 @@ class FileUtilsTest extends \UnitTestCase
         $this->assertEquals($this->data, $data);
     }
 
+    /**
+     * @author Kehinde Ladipo <kehinde.ladipo@cottacush.com>
+     */
+    public function testGetBase64ImageMimeType()
+    {
+        $fileData = base64_encode(file_get_contents(self::IMAGE_NAME));
+
+        $this->assertEquals('image/jpeg', FileUtils::getBase64ImageMimeType($fileData));
+    }
+
     public function tearDown()
     {
         parent::tearDown();
         unlink(self::FILE_NAME);
+        unlink(self::IMAGE_NAME);
     }
 }
