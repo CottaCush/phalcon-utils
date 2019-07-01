@@ -87,4 +87,29 @@ class TextUtilsTest extends \UnitTestCase
         );
         $this->assertEquals('+2348111111111', $number);
     }
+
+    /**
+     * @author Kehinde Ladipo <kehinde.ladipo@cottacush.com>
+     */
+    public function testConvertStringToHexadecimal()
+    {
+        $string = '123456';
+        $this->assertEquals(bin2hex($string), TextUtils::convertStringToHexadecimal($string));
+    }
+
+
+    /**
+     * @author Kehinde Ladipo <kehinde.ladipo@cottacush.com>
+     */
+    public function testGetIniVariableAsBytes()
+    {
+        $value = '2M';
+        $this->assertEquals(2 * 1024 * 1024, TextUtils::getIniVariableAsBytes($value));
+
+        $value = '4G';
+        $this->assertEquals(4 * 1024 * 1024 * 1024, TextUtils::getIniVariableAsBytes($value));
+
+        $value = '6K';
+        $this->assertEquals(6 * 1024, TextUtils::getIniVariableAsBytes($value));
+    }
 }
