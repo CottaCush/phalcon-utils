@@ -31,8 +31,8 @@ before_script:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - travis_retry composer install --no-interaction --ignore-platform-reqs
   - travis_retry vendor/bin/install-phalcon.sh $PHALCON_VERSION
-#  - travis_retry composer require --dev php-coveralls/php-coveralls:~2.0 --ignore-platform-reqs
-  - travis_retry composer require php-coveralls/php-coveralls:~2.0 --ignore-platform-reqs
+  - travis_retry composer require --dev php-coveralls/php-coveralls:~2.0 --ignore-platform-reqs
+#  - travis_retry composer require php-coveralls/php-coveralls:~2.0 --ignore-platform-reqs
 
 script:
   - vendor/bin/phpcs --standard=psr2 src/
@@ -40,4 +40,3 @@ script:
 
 after_success:
   - sh -c 'php vendor/bin/php-coveralls -v'
-#  - sh -c 'php vendor/bin/coveralls -v'
