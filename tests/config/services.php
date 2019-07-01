@@ -45,7 +45,6 @@ $di->setShared('security', function () {
 });
 
 $di->set(Services::LOGGER, function () use ($config) {
-    //$fileTarget = new File($config->application->logsDir . 'general.log');
     $fileTarget = new File('general.log');
 
     $targets = [$fileTarget];

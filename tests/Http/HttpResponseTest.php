@@ -4,6 +4,7 @@ namespace PhalconUtils\tests\Http;
 
 use Phalcon\Config;
 use Phalcon\DiInterface;
+use PhalconUtils\Constants\ResponseCodes;
 use PhalconUtils\Http\Response;
 use PhalconUtils\Util\ArrayUtils;
 
@@ -34,10 +35,11 @@ class HttpResponseTest extends \UnitTestCase
 
     public function testSendError()
     {
-        $this->response->sendError('');
+        $this->response->sendError(ResponseCodes::UNEXPECTED_ERROR);
         $response = $this->getActualOutput();
         $this->assertJson($response);
         $this->assertContains(Response::RESPONSE_TYPE_ERROR, $response);
+        $this->assertContains(ResponseCodes::UNEXPECTED_ERROR, $response);
     }
 
     public function testSendSuccess()
