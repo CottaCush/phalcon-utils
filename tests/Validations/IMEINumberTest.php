@@ -2,8 +2,6 @@
 
 namespace Tests;
 
-use Phalcon\DI;
-use Phalcon\Validation;
 use PhalconUtils\Validation\RequestValidation;
 use PhalconUtils\Validation\Validators\IMEINumber;
 
@@ -49,5 +47,4 @@ class IMEINumberTest extends \UnitTestCase
         $validation_status = $validation->validate(['imei' => '353918058092269']);
         $this->assertTrue($validation_status);
     }
-    
 }

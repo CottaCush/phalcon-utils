@@ -52,7 +52,9 @@ class IMEINumber extends BaseValidator
             }
             $sum += $num;
         }
-        if ((($sum + $imei[14]) % 10) != 0) return false;
+        if ((($sum + $imei[14]) % 10) != 0) {
+            return false;
+        }
         return true;
     }
 }

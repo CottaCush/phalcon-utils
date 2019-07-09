@@ -1,0 +1,32 @@
+language: php
+
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+
+# This triggers builds to run on the new TravisCI infrastructure.
+# See: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
+sudo: false
+
+## Cache composer
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+    - $HOME/cphalcon
+
+before_script:
+  - travis_retry composer self-update
+  - travis_retry composer config --global github-oauth.github.com "$GITHUB_TOKEN"
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - travis_retry composer install --no-interaction --ignore-platform-reqs
+  - travis_retry vendor/bin/install-phalcon.sh $PHALCON_VERSION
+  - travis_retry composer require --dev php-coveralls/php-coveralls:~2.0 --ignore-platform-reqs
+
+script:
+  - vendor/bin/phpcs --standard=psr2 src/
+  - vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
+
+after_success:
+  - sh -c 'php vendor/bin/php-coveralls -v'

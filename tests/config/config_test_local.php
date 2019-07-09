@@ -10,4 +10,5 @@ return new Config([
         'password' => '',
         'dbname' => 'phalcon_utils_test'
     ],
+    'debug' => true,
 ]);

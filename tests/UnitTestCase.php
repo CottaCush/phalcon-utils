@@ -1,7 +1,9 @@
 <?php
 
-use Phalcon\DI;
+use Phalcon\Config;
+use Phalcon\DiInterface;
 use Phalcon\Test\UnitTestCase as PhalconTestCase;
+use PHPUnit\Framework\IncompleteTestError;
 
 abstract class UnitTestCase extends PhalconTestCase
 {
@@ -15,27 +17,25 @@ abstract class UnitTestCase extends PhalconTestCase
      */
     private $_loaded = false;
 
-    public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL)
+    public function setUp(DiInterface $di = null, Config $config = null)
     {
-        // Load any additional services that might be required during testing
-        $di = DI::getDefault();
+        parent::setUp();
 
-        // Get any DI components here. If you have a config, be sure to pass it to the parent
-
-        parent::setUp($di);
-
+        global $di;
+        $this->setDI($di);
+        \Phalcon\Di::setDefault($this->getDI());
         $this->_loaded = true;
     }
 
     /**
      * Check if the test case is setup properly
      *
-     * @throws \PHPUnit_Framework_IncompleteTestError;
+     * @throws IncompleteTestError;
      */
     public function __destruct()
     {
         if (!$this->_loaded) {
-            throw new \PHPUnit_Framework_IncompleteTestError('Please run parent::setUp().');
+            throw new IncompleteTestError('Please run parent::setUp().');
         }
     }
 
@@ -46,5 +46,4 @@ abstract class UnitTestCase extends PhalconTestCase
     public function tearDown()
     {
     }
-
 }

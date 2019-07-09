@@ -1,6 +1,7 @@
 <?php
 
 namespace PhalconUtils\Validation\Validators;
+
 use Phalcon\Validation;
 
 /**

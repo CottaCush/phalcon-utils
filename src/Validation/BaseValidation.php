@@ -58,8 +58,7 @@ abstract class BaseValidation extends Validation
         $twoWordsConnector = ' and ',
         $lastWordConnector = null,
         $connector = ', '
-    )
-    {
+    ) {
         if ($lastWordConnector === null) {
             $lastWordConnector = $twoWordsConnector;
         }

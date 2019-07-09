@@ -109,6 +109,7 @@ class HttpStatusCodes
     const INTERNAL_SERVER_ERROR_CODE = 500;
     const OK_CODE = 200;
     const NOT_FOUND_CODE = 404;
+    const RESOURCE_CREATED_CODE = 201;
 
 
     /**
@@ -120,5 +121,4 @@ class HttpStatusCodes
     {
         return constant('self::HTTP_' . $code);
     }
-
 }

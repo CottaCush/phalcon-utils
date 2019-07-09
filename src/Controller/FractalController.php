@@ -70,8 +70,7 @@ abstract class FractalController extends BaseController
         $modelsToLoad,
         $resourceKey = null,
         $meta = null
-    )
-    {
+    ) {
         if ($modelsToLoad instanceof Transformable) {
             $modelsToLoad = $modelsToLoad->getModelsToLoad();
         }

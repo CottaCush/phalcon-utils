@@ -9,16 +9,16 @@ namespace PhalconUtils\Bootstrap;
  */
 class Bootstrap
 {
-    protected $_executables;
+    protected $executables;
 
     public function __construct(...$executables)
     {
-        $this->_executables = $executables;
+        $this->executables = $executables;
     }
 
     public function run(...$args)
     {
-        foreach ($this->_executables as $executable) {
+        foreach ($this->executables as $executable) {
             call_user_func_array([$executable, 'run'], $args);
         }
     }
